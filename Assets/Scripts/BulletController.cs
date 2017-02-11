@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public Transform CatTransform;
+    
     private float xTravel;
     // Use this for initialization
 
@@ -14,7 +14,7 @@ public class BulletController : MonoBehaviour
     }
 	void Start ()
 	{
-        CatTransform = GameObject.FindWithTag("Cat").transform;
+        
     }
 	
 	// Update is called once per frame
