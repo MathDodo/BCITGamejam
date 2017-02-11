@@ -4,12 +4,12 @@ using UnityEngine;
 /// This is a class for making specified functionality for the state,
 /// and to make the creation of the scriptable object possible.
 /// </summary>
-[CreateAssetMenu(fileName = "MovingState", menuName = "States/MovingState", order = 1)]
-public class MovingState : StateGeneric<Dog>
+[CreateAssetMenu(fileName = "AttackState", menuName = "States/AttackState", order = 1)]
+public class AttackState : StateGeneric<Dog>
 {
     [SerializeField]
     //The name of the state also exposed for the editor
-    private string stateName = "MovingState";
+    private string stateName = "AttackState";
 
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
@@ -17,7 +17,7 @@ public class MovingState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Enter(Dog user)
     {
-        user.ChangeAnimation("Walk");
+        user.ChangeAnimation("Attack");
     }
 
     /// <summary>
@@ -26,6 +26,16 @@ public class MovingState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Execute(Dog user)
     {
+        user.AttackDelay -= Time.deltaTime;
+
+        if (user.AttackDelay <= 0 && user.IsTargetInAttackRange)
+        {
+            //Deal damage to target
+        }
+        else if (!user.IsTargetInAttackRange)
+        {
+
+        }
     }
 
     /// <summary>
@@ -34,6 +44,7 @@ public class MovingState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Exit(Dog user)
     {
+        user.ResetAttack();
     }
 
     /// <summary>
@@ -50,7 +61,7 @@ public class MovingState : StateGeneric<Dog>
     /// </summary>
     public override void SetStateType()
     {
-        StateType = typeof(MovingState);
+        StateType = typeof(AttackState);
     }
 
     /// <summary>

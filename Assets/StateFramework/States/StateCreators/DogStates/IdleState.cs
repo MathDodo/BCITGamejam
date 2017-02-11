@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 /// <summary>
 /// This is a class for making specified functionality for the state,
@@ -18,6 +17,7 @@ public class IdleState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Enter(Dog user)
     {
+        user.ChangeAnimation("Idle");
     }
 
     /// <summary>

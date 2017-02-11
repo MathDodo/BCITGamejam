@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 /// <summary>
 /// This is a class for making specified functionality for the state,
@@ -18,6 +17,7 @@ public class AgressiveState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Enter(Dog user)
     {
+        user.ChangeAnimation("Run");
     }
 
     /// <summary>
@@ -26,6 +26,11 @@ public class AgressiveState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Execute(Dog user)
     {
+        if (user.IsTargetInAttackRange && user.AttackTimer <= 0)
+        {
+            user.ResetAttack();
+            user.MachineInstance.ChangeState<AttackState>(user);
+        }
     }
 
     /// <summary>

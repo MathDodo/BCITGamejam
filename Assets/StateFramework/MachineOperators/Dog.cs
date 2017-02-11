@@ -12,7 +12,18 @@ public class Dog : MachineOperator<Dog>
     [SerializeField]
     private int health = 100;
 
+    [SerializeField]
+    private float timeBetweenAttacks;
+
+    [SerializeField]
+    private float attackDelay = 0.3f;
+
     private Animator dogAnimator;
+
+    public float AttackDelay { get; set; }
+    public float AttackTimer { get; private set; }
+    public bool IsTargetInRange { get; set; }
+    public bool IsTargetInAttackRange { get; set; }
 
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
@@ -30,6 +41,11 @@ public class Dog : MachineOperator<Dog>
 
     private void Update()
     {
+        if (AttackTimer >= 0)
+        {
+            AttackTimer -= Time.deltaTime;
+        }
+
         if (!DimensionManager.Instance.FreezeTime)
         {
             dogAnimator.speed = 1;
@@ -41,8 +57,15 @@ public class Dog : MachineOperator<Dog>
         }
     }
 
+    public void ResetAttack()
+    {
+        AttackTimer = timeBetweenAttacks;
+        AttackDelay = attackDelay;
+    }
+
     public void ChangeAnimation(string animationName)
     {
-        dogAnimator.Play(animationName);
+        //Do this when animator is made
+        //dogAnimator.Play(animationName);
     }
 }
