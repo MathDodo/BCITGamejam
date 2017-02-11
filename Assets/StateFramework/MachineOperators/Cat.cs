@@ -16,6 +16,9 @@ public class Cat : MachineOperator<Cat>
     private bool canJump;
     public GameObject hairBallPrefab;
     public Transform hairBallSpawner;
+    private Vector3 curLoc;
+    private Vector3 preLoc;
+
 
 
     /// <summary>
@@ -42,24 +45,13 @@ public class Cat : MachineOperator<Cat>
     {
         //Update the active state
         MachineInstance.ExecuteActiveState(this);
+        
+       
+        
+        InputListen();
 
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SelectState();
-        }
-        if (canJump && Input.GetKeyDown(KeyCode.W))
-        {
-            Rigidbody.AddForce(Vector2.up * 250);
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Fire(hairBallPrefab, hairBallSpawner);
-        }
-
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 500;
-        Rigidbody.velocity = new Vector2(x, Rigidbody.velocity.y);
     }
+
 
     /// <summary>
     /// Select the state to go to here
@@ -95,18 +87,26 @@ public class Cat : MachineOperator<Cat>
 
     public void Fire(GameObject hairBallPrefab, Transform hairBallSpawner)
     {
-        
-        
+
+
         //Create the hairball!
-        var hairBall = Instantiate(hairBallPrefab, hairBallSpawner.position, hairBallSpawner.rotation);
+        var hairBall = Instantiate(hairBallPrefab, hairBallSpawner.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        if (transform.localScale.x < 0)
+        {
+            hairBall.GetComponent<BulletController>().Init(-0.1f);
+        }
+        if (transform.localScale.x > 0)
+        {
+            hairBall.GetComponent<BulletController>().Init(0.1f);
+        }
+       
+        //Rigidbody2D rigidBody = hairBall.GetComponent<Rigidbody2D>();
+        //rigidBody.AddForce(hairBall.transform.right * 750f);
+        //Debug.Log(rigidBody);
 
 
-        //Add velocity
-        hairBall.GetComponent<Rigidbody2D>().velocity = hairBall.transform.forward*50;
-     
-        Debug.Log(hairBall.transform);
         Destroy(hairBall, 5.0f);
-    }
+    }   
 
     public void ChangeAnimatorController(RuntimeAnimatorController controller)
     {
@@ -117,6 +117,38 @@ public class Cat : MachineOperator<Cat>
     public void ChangeCollisionLayer(string layerName)
     {
         gameObject.layer = LayerMask.NameToLayer(layerName);
+    }
+
+    private void InputListen()
+    {
+        preLoc = curLoc;
+        curLoc = transform.position;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SelectState();
+        }
+        if (canJump && Input.GetKeyDown(KeyCode.W))
+        {
+            Rigidbody.AddForce(Vector2.up * 250);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Fire(hairBallPrefab, hairBallSpawner);
+        }
+        //left movement
+        if (Input.GetKey(KeyCode.A))
+        {
+            curLoc -= new Vector3(1 * Time.fixedDeltaTime, 0);
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        //Right movement
+        if (Input.GetKey(KeyCode.D))
+        {
+            curLoc += new Vector3(1 * Time.fixedDeltaTime, 0);
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        transform.position = curLoc;
     }
 }
 
