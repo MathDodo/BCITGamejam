@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-
 /// <summary>
 /// This is the special inspector for the controller which is specified by the custom editor
 /// </summary>
@@ -23,6 +22,7 @@ public class CatControllerInspector : Editor
     /// <summary>
     public override void OnInspectorGUI()
     {
+        DrawDefaultInspector();
         //Setting the label for the custom inspector
         GUILayout.Label("States in controller: ");
 
@@ -30,12 +30,15 @@ public class CatControllerInspector : Editor
         for (int i = 0; i < stateController.AllowedStates.Count; i++)
         {
             //Making sure to set the names of the different states
-            if (stateController.AllowedStates[i].StateName == string.Empty)
+            if (stateController.AllowedStates[i])
             {
-                stateController.AllowedStates[i].SetStateName();
+                if (stateController.AllowedStates[i].StateName == string.Empty)
+                {
+                    stateController.AllowedStates[i].SetStateName();
+                }
+                //Setting up the label with the state name
+                GUILayout.Label(stateController.AllowedStates[i].StateName);
             }
-            //Setting up the label with the state name
-            GUILayout.Label(stateController.AllowedStates[i].StateName);
         }
 
         //Making the button to add states
