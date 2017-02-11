@@ -11,7 +11,6 @@ using UnityEngine;
 public abstract class StateController : ScriptableObject
 {
     //The list of allowed states in this controller, will be showed by a custom inspector view no need to use Serialize field
-    [SerializeField]
     private List<State> allowedStates = new List<State>();
 
     //Making the access public for the allowed states but as read only so you cant remove or add to the allowed states through code
