@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -18,7 +17,7 @@ public class Cat : MachineOperator<Cat>
     private Vector3 curLoc;
     private Vector3 preLoc;
     private float xScale;
-    
+
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
     /// <summary>
@@ -124,7 +123,7 @@ public class Cat : MachineOperator<Cat>
         }
         if (canJump && Input.GetKeyDown(KeyCode.W))
         {
-            Rigidbody.AddForce(Vector2.up*250);
+            Rigidbody.AddForce(Vector2.up * 250);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -133,15 +132,15 @@ public class Cat : MachineOperator<Cat>
         //left movement
         if (Input.GetKey(KeyCode.A))
         {
-            curLoc -= new Vector3(1*Time.fixedDeltaTime, 0);
+            curLoc -= new Vector3(1 * Time.fixedDeltaTime, 0);
             transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
         }
         //Right movement
         if (Input.GetKey(KeyCode.D))
         {
-            curLoc += new Vector3(1*Time.fixedDeltaTime, 0);
+            curLoc += new Vector3(1 * Time.fixedDeltaTime, 0);
             transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
-            
+
         }
 
         transform.position = curLoc;

@@ -7,8 +7,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MovingState", menuName = "States/MovingState", order = 1)]
 public class MovingState : StateGeneric<Dog>
 {
-    [SerializeField]
     //The name of the state also exposed for the editor
+    [SerializeField]
     private string stateName = "MovingState";
 
     /// <summary>
@@ -26,6 +26,14 @@ public class MovingState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Execute(Dog user)
     {
+        user.MovingTimer -= Time.deltaTime;
+
+        user.RBody.velocity = new Vector2(user.MovingDirection * Time.deltaTime * 100, user.RBody.velocity.y);
+
+        if (user.MovingTimer <= 0)
+        {
+            user.MachineInstance.ChangeState<IdleState>(user);
+        }
     }
 
     /// <summary>
@@ -34,6 +42,7 @@ public class MovingState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Exit(Dog user)
     {
+        user.ResetMovingTimer();
     }
 
     /// <summary>

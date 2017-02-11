@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
@@ -26,13 +24,14 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(this);
         damage = 25;
-        if (other.gameObject.tag == "Dog")
+
+        if (collision.gameObject.tag == "Dog")
         {
-            other.gameObject.GetComponent<Dog>().TakeDamage(damage);
+            Destroy(this.gameObject);
+            collision.gameObject.GetComponent<Dog>().TakeDamage(damage);
         }
     }
 }
