@@ -8,5 +8,5 @@ using UnityEngine;
 public class CatController : StateControllerGeneric<Cat>
 {
     [SerializeField]
-    private string test = "Good job";
+    private string test = "Test1";
 }
