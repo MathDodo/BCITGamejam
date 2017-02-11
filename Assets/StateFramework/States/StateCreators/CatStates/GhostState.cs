@@ -4,12 +4,12 @@ using UnityEngine;
 /// This is a class for making specified functionality for the state,
 /// and to make the creation of the scriptable object possible.
 /// </summary>
-[CreateAssetMenu(fileName = "TimeCat", menuName = "States/TimeCat", order = 1)]
-public class TimeCat : StateGeneric<Cat>
+[CreateAssetMenu(fileName = "GhostState", menuName = "States/GhostState", order = 1)]
+public class GhostState : StateGeneric<Cat>
 {
-    [SerializeField]
     //The name of the state also exposed for the editor
-    private string stateName = "TimeCat";
+    [SerializeField]
+    private string stateName = "GhostState";
 
     [SerializeField]
     private RuntimeAnimatorController controller;
@@ -20,7 +20,8 @@ public class TimeCat : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
-        DimensionManager.Instance.StopDimensionTime();
+        user.ChangeAnimatorController(controller);
+        user.ChangeCollisionLayer("Ghost");
     }
 
     /// <summary>
@@ -37,7 +38,6 @@ public class TimeCat : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Exit(Cat user)
     {
-        DimensionManager.Instance.StartDimensionTime();
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class TimeCat : StateGeneric<Cat>
     /// </summary>
     public override void SetStateType()
     {
-        StateType = typeof(TimeCat);
+        StateType = typeof(GhostState);
     }
 
     /// <summary>

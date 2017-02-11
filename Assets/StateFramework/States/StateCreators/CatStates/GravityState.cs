@@ -1,19 +1,20 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 /// <summary>
 /// This is a class for making specified functionality for the state,
 /// and to make the creation of the scriptable object possible.
 /// </summary>
-[CreateAssetMenu(fileName = "NormalState", menuName = "States/NormalState", order = 1)]
-public class NormalState : StateGeneric<Cat>
+[CreateAssetMenu(fileName = "GravityState", menuName = "States/GravityState", order = 1)]
+public class GravityState : StateGeneric<Cat>
 {
-    [SerializeField]
     //The name of the state also exposed for the editor
-    private string stateName = "NormalState";
+    [SerializeField]
+    private string stateName = "GravityState";
 
     [SerializeField]
-    private RuntimeAnimatorController controller;
+    private float exitTimer = 2;
+
+    private float timer;
 
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
@@ -21,8 +22,11 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
-
+        user.Rigidbody.velocity = new Vector2(0, 20);
+        Physics2D.gravity = new Vector2(0, 10);
+        timer = exitTimer;
     }
+
 
     /// <summary>
     /// Mehtod which is called when the user wants to execute, probably an execute is called each frame
@@ -30,7 +34,10 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
-
+        if (timer <= 0)
+            user.MachineInstance.ChangeState<NormalState>(user);
+        else
+            timer -= Time.deltaTime;
     }
 
     /// <summary>
@@ -39,6 +46,8 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Exit(Cat user)
     {
+        user.Rigidbody.velocity = new Vector2(0, -20);
+        Physics2D.gravity = new Vector2(0, -10);
     }
 
     /// <summary>
@@ -55,7 +64,7 @@ public class NormalState : StateGeneric<Cat>
     /// </summary>
     public override void SetStateType()
     {
-        StateType = typeof(NormalState);
+        StateType = typeof(GravityState);
     }
 
     /// <summary>

@@ -1,3 +1,4 @@
+
 using UnityEditor;
 using UnityEngine;
 
@@ -105,6 +106,17 @@ public class Cat : MachineOperator<Cat>
      
         Debug.Log(hairBall.transform);
         Destroy(hairBall, 5.0f);
+    }
+
+    public void ChangeAnimatorController(RuntimeAnimatorController controller)
+    {
+        //Enable this when we have an animator and the states have a controller
+        //animator.runtimeAnimatorController = controller;
+    }
+
+    public void ChangeCollisionLayer(string layerName)
+    {
+        gameObject.layer = LayerMask.NameToLayer(layerName);
     }
 }
 
