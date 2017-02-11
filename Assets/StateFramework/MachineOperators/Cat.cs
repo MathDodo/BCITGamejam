@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -12,6 +13,9 @@ public class Cat : MachineOperator<Cat>
     private Animator animator;
     public Rigidbody2D Rigidbody { get; set; }
     private bool canJump;
+    public GameObject hairBallPrefab;
+    public Transform hairBallSpawner;
+
 
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
@@ -43,9 +47,13 @@ public class Cat : MachineOperator<Cat>
         {
             SelectState();
         }
-        if (canJump && Input.GetKeyDown(KeyCode.UpArrow))
+        if (canJump && Input.GetKeyDown(KeyCode.W))
         {
             Rigidbody.AddForce(Vector2.up * 250);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Fire(hairBallPrefab, hairBallSpawner);
         }
 
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * 500;
@@ -82,6 +90,21 @@ public class Cat : MachineOperator<Cat>
         {
             canJump = false;
         }
+    }
+
+    public void Fire(GameObject hairBallPrefab, Transform hairBallSpawner)
+    {
+        
+        
+        //Create the hairball!
+        var hairBall = Instantiate(hairBallPrefab, hairBallSpawner.position, hairBallSpawner.rotation);
+
+
+        //Add velocity
+        hairBall.GetComponent<Rigidbody2D>().velocity = hairBall.transform.forward*50;
+     
+        Debug.Log(hairBall.transform);
+        Destroy(hairBall, 5.0f);
     }
 }
 
