@@ -2,7 +2,9 @@
 
 public class Cat : MonoBehaviour
 {
+    [SerializeField]
     private int dimension;
+
     private Rigidbody2D rBody2D;
 
     public int Dimension { get { return dimension; } }
@@ -17,7 +19,7 @@ public class Cat : MonoBehaviour
 
     private void Update()
     {
-        float x = Input.GetAxis("Horizontal");
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime;
 
         transform.Translate(x, 0, 0);
     }
