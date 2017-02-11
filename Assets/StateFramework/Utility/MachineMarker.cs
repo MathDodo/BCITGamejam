@@ -3,6 +3,5 @@
 /// </summary>
 public enum MachineMarker
 {
-    DemoMachine,
     CatFSM,
 }
