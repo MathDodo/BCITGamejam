@@ -22,8 +22,8 @@ public class GravityState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
-        user.Rigidbody.velocity = new Vector2(50, 0);
-        Physics2D.gravity = new Vector2(0, 20);
+        user.Rigidbody.velocity = new Vector2(0, 20);
+        Physics2D.gravity = new Vector2(0, 10);
         timer = exitTimer;
     }
 
@@ -46,7 +46,7 @@ public class GravityState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Exit(Cat user)
     {
-        user.Rigidbody.velocity = user.Rigidbody.velocity * .5f;
+        user.Rigidbody.velocity = new Vector2(0, -20);
         Physics2D.gravity = new Vector2(0, -10);
     }
 

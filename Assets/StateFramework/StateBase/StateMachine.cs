@@ -91,7 +91,7 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MachineOperator<
             //Entering the active state
             user.ActiveState.Enter(user);
         }
-        //Cheking if the type is inside the dictionary, if the users active state is not equal to the target state and if the active state is ready to be exited 
+        //Cheking if the type is inside the dictionary, if the users active state is not equal to the target state and if the active state is ready to be exited
         else if (allowedTypeStates.Keys.Contains(t1) && user.ActiveState != allowedTypeStates[t1] && user.ActiveState.IsReadyToExit(user))
         {
             //Exiting the active state at the user
@@ -123,7 +123,7 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MachineOperator<
             //Entering the active state
             user.ActiveState.Enter(user);
         }
-        //Cheking if the state name is inside the dictionary, if the users active state is not equal to the target state and if the active state is ready to be exited 
+        //Cheking if the state name is inside the dictionary, if the users active state is not equal to the target state and if the active state is ready to be exited
         else if (allowedStringStates.Keys.Contains(stateName) && user.ActiveState != allowedStringStates[stateName] && user.ActiveState.IsReadyToExit(user))
         {
             //Exiting the active state at the user
@@ -141,7 +141,7 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MachineOperator<
     }
 
     /// <summary>
-    /// Executing the users active state 
+    /// Executing the users active state
     /// </summary>
     /// <param name="user"></param>
     public void ExecuteActiveState(T user)
