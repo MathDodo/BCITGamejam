@@ -8,8 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13c2c8177f0c5da4a95f4edc9f75f8de, type: 3}
-  m_Name: CatController
+  m_Script: {fileID: 11500000, guid: 4994359e4d08f6642ba179d32958f3f5, type: 3}
+  m_Name: MovingState
   m_EditorClassIdentifier: 
-  allowedStates: []
-  test: Good job
+  stateName: MovingState

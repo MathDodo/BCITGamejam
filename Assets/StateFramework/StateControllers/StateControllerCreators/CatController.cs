@@ -7,4 +7,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CatController", menuName = "StateControllers/CatController", order = 2)]
 public class CatController : StateControllerGeneric<Cat>
 {
+    [SerializeField]
+    private string test = "Good job";
 }

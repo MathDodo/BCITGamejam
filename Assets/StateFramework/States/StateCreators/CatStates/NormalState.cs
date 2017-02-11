@@ -34,10 +34,12 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             user.Fire(hairBallPrefab, hairBallSpawner);
         }
+
     }
 
     /// <summary>

@@ -1,4 +1,3 @@
-
 using UnityEditor;
 using UnityEngine;
 
@@ -30,9 +29,8 @@ public class Cat : MachineOperator<Cat>
         Init(targetMachine);
 
         //Calling the must run method for the machine instance, and enabling the change state with types
-        MachineInstance.Init(useStateNames: false);
+        MachineInstance.Init();
 
-        animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody2D>();
 
         MachineInstance.ChangeState<NormalState>(this);
@@ -103,6 +101,7 @@ public class Cat : MachineOperator<Cat>
         //Rigidbody2D rigidBody = hairBall.GetComponent<Rigidbody2D>();
         //rigidBody.AddForce(hairBall.transform.right * 750f);
         //Debug.Log(rigidBody);
+
 
 
         Destroy(hairBall, 5.0f);
