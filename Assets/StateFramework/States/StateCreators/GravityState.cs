@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 /// <summary>
 /// This is a class for making specified functionality for the state,
@@ -14,6 +13,7 @@ public class GravityState : StateGeneric<Cat>
 
     [SerializeField]
     private float exitTimer = 2;
+
     private float timer;
 
     /// <summary>

@@ -9,9 +9,6 @@ public class Cat : MachineOperator<Cat>
     //The mark of the target machine, also exposed to the inspector
     private MachineMarker targetMachine = MachineMarker.CatFSM;
 
-    [SerializeField]
-    private RuntimeAnimatorController c;
-
     private bool canJump;
     private Animator animator;
     public Rigidbody2D Rigidbody { get; set; }
