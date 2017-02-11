@@ -68,4 +68,14 @@ public class Dog : MachineOperator<Dog>
         //Do this when animator is made
         //dogAnimator.Play(animationName);
     }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Destroy(this);
+        }
+    }
 }
