@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123813f5ce6eb984ea9ea5065df98134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 11400000, guid: ed3e5ff7134db0e4e8024912594db18b, type: 2}
   myMark: 0
 --- !u!4 &126145455
 Transform:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a19a157969e9324eaac0d87b312ad36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 11400000, guid: 168f35a0bf9a47440a7f88828b0b7d99, type: 2}
   myMark: 1
 --- !u!1 &139703894
 GameObject:

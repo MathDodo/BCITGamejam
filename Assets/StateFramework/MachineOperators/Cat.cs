@@ -17,9 +17,8 @@ public class Cat : MachineOperator<Cat>
     public Transform hairBallSpawner;
     private Vector3 curLoc;
     private Vector3 preLoc;
-
-
-
+    private float xScale;
+    
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
     /// <summary>
@@ -34,6 +33,8 @@ public class Cat : MachineOperator<Cat>
         Rigidbody = GetComponent<Rigidbody2D>();
 
         MachineInstance.ChangeState<NormalState>(this);
+
+        xScale = transform.localScale.x;
     }
 
     /// <summary>
@@ -43,11 +44,9 @@ public class Cat : MachineOperator<Cat>
     {
         //Update the active state
         MachineInstance.ExecuteActiveState(this);
-        
-       
-        
-        InputListen();
 
+
+        InputListen();
     }
 
 
@@ -63,14 +62,12 @@ public class Cat : MachineOperator<Cat>
         //Get the state in the carousel
 
         MachineInstance.ChangeState<GravityState>(this);
-
     }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-
         if (other.gameObject.tag == "Floor")
         {
-
             canJump = true;
         }
     }
@@ -85,8 +82,6 @@ public class Cat : MachineOperator<Cat>
 
     public void Fire(GameObject hairBallPrefab, Transform hairBallSpawner)
     {
-
-
         //Create the hairball!
         var hairBall = Instantiate(hairBallPrefab, hairBallSpawner.position, Quaternion.Euler(new Vector3(0, 0, 0)));
         if (transform.localScale.x < 0)
@@ -97,15 +92,14 @@ public class Cat : MachineOperator<Cat>
         {
             hairBall.GetComponent<BulletController>().Init(0.1f);
         }
-       
+
         //Rigidbody2D rigidBody = hairBall.GetComponent<Rigidbody2D>();
         //rigidBody.AddForce(hairBall.transform.right * 750f);
         //Debug.Log(rigidBody);
 
 
-
         Destroy(hairBall, 5.0f);
-    }   
+    }
 
     public void ChangeAnimatorController(RuntimeAnimatorController controller)
     {
@@ -121,6 +115,8 @@ public class Cat : MachineOperator<Cat>
     private void InputListen()
     {
         preLoc = curLoc;
+
+
         curLoc = transform.position;
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -128,7 +124,7 @@ public class Cat : MachineOperator<Cat>
         }
         if (canJump && Input.GetKeyDown(KeyCode.W))
         {
-            Rigidbody.AddForce(Vector2.up * 250);
+            Rigidbody.AddForce(Vector2.up*250);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -137,14 +133,15 @@ public class Cat : MachineOperator<Cat>
         //left movement
         if (Input.GetKey(KeyCode.A))
         {
-            curLoc -= new Vector3(1 * Time.fixedDeltaTime, 0);
-            transform.localScale = new Vector3(-1, 1, 1);
+            curLoc -= new Vector3(1*Time.fixedDeltaTime, 0);
+            transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
         }
         //Right movement
         if (Input.GetKey(KeyCode.D))
         {
-            curLoc += new Vector3(1 * Time.fixedDeltaTime, 0);
-            transform.localScale = new Vector3(1, 1, 1);
+            curLoc += new Vector3(1*Time.fixedDeltaTime, 0);
+            transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
+            
         }
 
         transform.position = curLoc;
