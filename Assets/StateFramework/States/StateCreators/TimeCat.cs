@@ -1,16 +1,15 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 /// <summary>
 /// This is a class for making specified functionality for the state,
 /// and to make the creation of the scriptable object possible.
 /// </summary>
-[CreateAssetMenu(fileName = "NormalState", menuName = "States/NormalState", order = 1)]
-public class NormalState : StateGeneric<Cat>
+[CreateAssetMenu(fileName = "TimeCat", menuName = "States/TimeCat", order = 1)]
+public class TimeCat : StateGeneric<Cat>
 {
     [SerializeField]
     //The name of the state also exposed for the editor
-    private string stateName = "NormalState";
+    private string stateName = "TimeCat";
 
     [SerializeField]
     private RuntimeAnimatorController controller;
@@ -21,7 +20,7 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
-
+        DimensionManager.Instance.StopDimensionTime();
     }
 
     /// <summary>
@@ -30,7 +29,6 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
-
     }
 
     /// <summary>
@@ -39,6 +37,7 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Exit(Cat user)
     {
+        DimensionManager.Instance.StartDimensionTime();
     }
 
     /// <summary>
@@ -55,7 +54,7 @@ public class NormalState : StateGeneric<Cat>
     /// </summary>
     public override void SetStateType()
     {
-        StateType = typeof(NormalState);
+        StateType = typeof(TimeCat);
     }
 
     /// <summary>
