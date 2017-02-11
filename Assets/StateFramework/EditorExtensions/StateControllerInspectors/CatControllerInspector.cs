@@ -23,8 +23,6 @@ public class CatControllerInspector : Editor
     /// <summary>
     public override void OnInspectorGUI()
     {
-        DrawDefaultInspector();
-
         //Setting the label for the custom inspector
         GUILayout.Label("States in controller: ");
 
