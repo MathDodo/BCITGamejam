@@ -18,6 +18,10 @@ public class Cat : MachineOperator<Cat>
     private Animator animator;
     public Rigidbody2D Rigidbody { get; set; }
 
+    private bool canJump;
+
+   
+
 
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
@@ -51,7 +55,14 @@ public class Cat : MachineOperator<Cat>
             SelectState();
         }
 
+
+        if (canJump && Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Rigidbody.AddForce(Vector2.up * 250);
+        }
+          
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * 500;
+        
         Rigidbody.velocity = new Vector2(x, Rigidbody.velocity.y);
     }
 
@@ -68,5 +79,23 @@ public class Cat : MachineOperator<Cat>
 
         MachineInstance.ChangeState<GravityState>(this);
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+       
+        if (other.gameObject.tag == "Floor")
+        {
+            
+            canJump = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Floor")
+        {
+            canJump = false;
+        }
     }
 }
