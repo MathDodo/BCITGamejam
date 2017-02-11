@@ -9,12 +9,6 @@ public class Cat : MachineOperator<Cat>
     //The mark of the target machine, also exposed to the inspector
     private MachineMarker targetMachine = MachineMarker.CatFSM;
 
-
-    [SerializeField]
-    private RuntimeAnimatorController c;
-
-    public Animator ting { get; private set; }
-
     private Animator animator;
     public Rigidbody2D Rigidbody { get; set; }
 
@@ -29,7 +23,6 @@ public class Cat : MachineOperator<Cat>
 
         //Calling the must run method for the machine instance, and enabling the change state with types
         MachineInstance.Init(useStateNames: false);
-
 
         animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody2D>();
