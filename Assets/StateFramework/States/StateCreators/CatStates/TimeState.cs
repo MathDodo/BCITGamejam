@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 /// <summary>
 /// This is a class for making specified functionality for the state,
@@ -18,6 +17,7 @@ public class TimeState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
+        DimensionManager.Instance.StopDimensionTime();
     }
 
     /// <summary>
@@ -37,6 +37,7 @@ public class TimeState : StateGeneric<Cat>
     public override void Exit(Cat user)
     {
         Carousel.Instance.SwapCatBack();
+        DimensionManager.Instance.StopDimensionTime();
     }
 
     /// <summary>
