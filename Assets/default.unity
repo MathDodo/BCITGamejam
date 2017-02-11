@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetMachine: 1
+  c: {fileID: 0}
 --- !u!23 &1231035761
 MeshRenderer:
   m_ObjectHideFlags: 0

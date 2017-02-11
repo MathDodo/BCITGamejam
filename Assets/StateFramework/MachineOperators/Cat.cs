@@ -9,7 +9,6 @@ public class Cat : MachineOperator<Cat>
     //The mark of the target machine, also exposed to the inspector
     private MachineMarker targetMachine = MachineMarker.CatFSM;
 
-
     [SerializeField]
     private RuntimeAnimatorController c;
 
@@ -68,5 +67,16 @@ public class Cat : MachineOperator<Cat>
 
         MachineInstance.ChangeState<GravityState>(this);
 
+    }
+
+    public void ChangeAnimatorController(RuntimeAnimatorController controller)
+    {
+        //Enable this when we have an animator and the states have a controller
+        //animator.runtimeAnimatorController = controller;
+    }
+
+    public void ChangeCollisionLayer(string layerName)
+    {
+        gameObject.layer = LayerMask.NameToLayer(layerName);
     }
 }

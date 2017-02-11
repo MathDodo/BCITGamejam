@@ -4,13 +4,12 @@ using UnityEngine;
 /// This is a class for making specified functionality for the state,
 /// and to make the creation of the scriptable object possible.
 /// </summary>
-[CreateAssetMenu(fileName = "NormalState", menuName = "States/NormalState", order = 1)]
-public class NormalState : StateGeneric<Cat>
+[CreateAssetMenu(fileName = "GhostState", menuName = "States/GhostState", order = 1)]
+public class GhostState : StateGeneric<Cat>
 {
-    [SerializeField]
     //The name of the state also exposed for the editor
-    private string stateName = "NormalState";
-
+    [SerializeField]
+    private string stateName = "GhostState";
 
     [SerializeField]
     private RuntimeAnimatorController controller;
@@ -22,7 +21,7 @@ public class NormalState : StateGeneric<Cat>
     public override void Enter(Cat user)
     {
         user.ChangeAnimatorController(controller);
-        user.ChangeCollisionLayer("Default");
+        user.ChangeCollisionLayer("Ghost");
     }
 
     /// <summary>
@@ -31,7 +30,6 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
-
     }
 
     /// <summary>
@@ -56,7 +54,7 @@ public class NormalState : StateGeneric<Cat>
     /// </summary>
     public override void SetStateType()
     {
-        StateType = typeof(NormalState);
+        StateType = typeof(GhostState);
     }
 
     /// <summary>
