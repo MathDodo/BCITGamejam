@@ -10,6 +10,8 @@ public class NormalState : StateGeneric<Cat>
     [SerializeField]
     //The name of the state also exposed for the editor
     private string stateName = "NormalState";
+    private GameObject hairBallPrefab;
+    private Transform hairBallSpawner;
 
     [SerializeField]
     private RuntimeAnimatorController controller;
@@ -22,6 +24,8 @@ public class NormalState : StateGeneric<Cat>
     {
         user.ChangeAnimatorController(controller);
         user.ChangeCollisionLayer("Default");
+        hairBallSpawner = user.hairBallSpawner;
+        hairBallPrefab = user.hairBallPrefab;
     }
 
     /// <summary>
@@ -30,6 +34,12 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            user.Fire(hairBallPrefab, hairBallSpawner);
+        }
+
     }
 
     /// <summary>
