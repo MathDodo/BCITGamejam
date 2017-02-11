@@ -29,7 +29,6 @@ public class Cat : MachineOperator<Cat>
         //Calling the must run method for the machine instance, and enabling the change state with types
         MachineInstance.Init(useStateNames: false);
 
-        animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody2D>();
 
         MachineInstance.ChangeState<NormalState>(this);
@@ -95,15 +94,15 @@ public class Cat : MachineOperator<Cat>
 
     public void Fire(GameObject hairBallPrefab, Transform hairBallSpawner)
     {
-        
-        
+
+
         //Create the hairball!
         var hairBall = Instantiate(hairBallPrefab, hairBallSpawner.position, hairBallSpawner.rotation);
 
 
         //Add velocity
-        hairBall.GetComponent<Rigidbody2D>().velocity = hairBall.transform.forward*50;
-     
+        hairBall.GetComponent<Rigidbody2D>().velocity = hairBall.transform.forward * 50;
+
         Debug.Log(hairBall.transform);
         Destroy(hairBall, 5.0f);
     }
