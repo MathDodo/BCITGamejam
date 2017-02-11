@@ -9,6 +9,11 @@ public class Cat : MachineOperator<Cat>
     //The mark of the target machine, also exposed to the inspector
     private MachineMarker targetMachine = MachineMarker.CatFSM;
 
+    [SerializeField]
+    private RuntimeAnimatorController c;
+
+    public Animator ting { get; private set; }
+
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
     /// <summary>
@@ -21,5 +26,14 @@ public class Cat : MachineOperator<Cat>
         MachineInstance.Init(useStateNames: false);
 
         MachineInstance.ChangeState<NormalState>(this);
+    }
+
+    /// <summary>
+    /// Update
+    /// </summary>
+    private void Update()
+    {
+        //Update the active state
+        MachineInstance.ExecuteActiveState(this);
     }
 }
