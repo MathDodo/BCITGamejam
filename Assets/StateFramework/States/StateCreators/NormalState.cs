@@ -11,7 +11,6 @@ public class NormalState : StateGeneric<Cat>
     //The name of the state also exposed for the editor
     private string stateName = "NormalState";
 
-
     [SerializeField]
     private RuntimeAnimatorController controller;
 

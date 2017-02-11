@@ -12,8 +12,7 @@ public class Cat : MachineOperator<Cat>
     [SerializeField]
     private RuntimeAnimatorController c;
 
-    public Animator ting { get; private set; }
-
+    private bool canJump;
     private Animator animator;
     public Rigidbody2D Rigidbody { get; set; }
 
@@ -35,7 +34,6 @@ public class Cat : MachineOperator<Cat>
 
         MachineInstance.ChangeState<NormalState>(this);
     }
-
     /// <summary>
     /// Update
     /// </summary>
@@ -48,6 +46,10 @@ public class Cat : MachineOperator<Cat>
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SelectState();
+        }
+        if (canJump && Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Rigidbody.AddForce(Vector2.up * 250);
         }
 
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * 500;
@@ -78,5 +80,24 @@ public class Cat : MachineOperator<Cat>
     public void ChangeCollisionLayer(string layerName)
     {
         gameObject.layer = LayerMask.NameToLayer(layerName);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+
+        if (other.gameObject.tag == "Floor")
+        {
+
+            canJump = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Floor")
+        {
+            canJump = false;
+
+        }
     }
 }
