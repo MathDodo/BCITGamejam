@@ -21,5 +21,7 @@ public class Cat : MachineOperator<Cat>
         MachineInstance.Init(useStateNames: false);
 
         MachineInstance.ChangeState<NormalState>(this);
+
+
     }
 }
