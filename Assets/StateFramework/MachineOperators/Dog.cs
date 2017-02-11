@@ -116,7 +116,7 @@ public class Dog : MachineOperator<Dog>
 
         if (health <= 0)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }
