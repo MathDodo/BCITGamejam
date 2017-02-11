@@ -1,21 +1,22 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// This is a class for making specified functionality for the state,
 /// and to make the creation of the scriptable object possible.
 /// </summary>
-[CreateAssetMenu(fileName = "DemoState", menuName = "States/DemoState", order = 2)]
-public class DemoState : StateGeneric<Demo>
+[CreateAssetMenu(fileName = "NormalState", menuName = "States/NormalState", order = 1)]
+public class NormalState : StateGeneric<Cat>
 {
     [SerializeField]
     //The name of the state also exposed for the editor
-    private string stateName = "DemoState";
+    private string stateName = "NormalState";
 
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
     /// </summary>
     /// <param name="user"></param>
-    public override void Enter(Demo user)
+    public override void Enter(Cat user)
     {
     }
 
@@ -23,7 +24,7 @@ public class DemoState : StateGeneric<Demo>
     /// Mehtod which is called when the user wants to execute, probably an execute is called each frame
     /// </summary>
     /// <param name="user"></param>
-    public override void Execute(Demo user)
+    public override void Execute(Cat user)
     {
     }
 
@@ -31,7 +32,7 @@ public class DemoState : StateGeneric<Demo>
     /// Method which is called when a user exists this state, normally when the user changes states
     /// </summary>
     /// <param name="user"></param>
-    public override void Exit(Demo user)
+    public override void Exit(Cat user)
     {
     }
 
@@ -39,8 +40,7 @@ public class DemoState : StateGeneric<Demo>
     /// This method is run to check if this state is ready to be exited, if you want a user to be in a state for any amount time this is where you stop it from exiting
     /// </summary>
     /// <param name="user"></param>
-    /// <returns></returns>
-    public override bool IsReadyToExit(Demo user)
+    public override bool IsReadyToExit(Cat user)
     {
         return true;
     }
@@ -50,7 +50,7 @@ public class DemoState : StateGeneric<Demo>
     /// </summary>
     public override void SetStateType()
     {
-        StateType = typeof(DemoState);
+        StateType = typeof(NormalState);
     }
 
     /// <summary>

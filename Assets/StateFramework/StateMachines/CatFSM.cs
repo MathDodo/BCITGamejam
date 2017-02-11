@@ -1,15 +1,15 @@
 using System.Linq;
 using UnityEngine;
 
-public class DemoMachine : StateMachine<Demo>
+public class CatFSM : StateMachine<Cat>
 {
     [SerializeField]
     //This is the machines controller need to be set through the inspector
-    private DemoController controller;
+    private CatController controller;
 
     [SerializeField]
     //The mark of the machine so the operator can find the machine, also exposed to the inspector
-    private MachineMarker myMark = MachineMarker.DemoMachine;
+    private MachineMarker myMark = MachineMarker.CatFSM;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class DemoMachine : StateMachine<Demo>
         specifiedController = controller;
 
         //Adding this machine to the instances of machines if the mark is free
-        if (!instances.Any(i => i.Mark == myMark))
+        if(!instances.Any(i => i.Mark == myMark))
         {
             instances.Add(this);
         }
