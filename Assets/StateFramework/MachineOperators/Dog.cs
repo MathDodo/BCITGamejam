@@ -9,6 +9,9 @@ public class Dog : MachineOperator<Dog>
     //The mark of the target machine, also exposed to the inspector
     private MachineMarker targetMachine = MachineMarker.DogMachine;
 
+    [SerializeField]
+    private int health = 100;
+
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
     /// <summary>

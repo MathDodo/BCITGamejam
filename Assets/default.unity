@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123813f5ce6eb984ea9ea5065df98134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 11400000, guid: ed3e5ff7134db0e4e8024912594db18b, type: 2}
+  controller: {fileID: 0}
   myMark: 0
 --- !u!4 &126145455
 Transform:
@@ -230,6 +230,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &497110180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 497110182}
+  - component: {fileID: 497110181}
+  m_Layer: 0
+  m_Name: Dog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &497110181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 497110180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4868d38124fe61e4d8b59854c09c87a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMachine: 1
+  health: 100
+--- !u!4 &497110182
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 497110180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &623159191
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +369,7 @@ GameObject:
   - component: {fileID: 1231035762}
   - component: {fileID: 1231035760}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
