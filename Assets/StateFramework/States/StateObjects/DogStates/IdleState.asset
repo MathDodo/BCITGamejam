@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533c6b61848dc4a4ea1715fb2e76b77a, type: 3}
-  m_Name: GhostState
+  m_Script: {fileID: 11500000, guid: b5ed8d950739b21408b06e6dc3fd2685, type: 3}
+  m_Name: IdleState
   m_EditorClassIdentifier: 
-  stateName: GhostState
+  stateName: Trial
