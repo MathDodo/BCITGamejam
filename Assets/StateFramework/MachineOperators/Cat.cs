@@ -27,7 +27,7 @@ public class Cat : MachineOperator<Cat>
         Init(targetMachine);
 
         //Calling the must run method for the machine instance, and enabling the change state with types
-        MachineInstance.Init(useStateNames: false);
+        MachineInstance.Init();
 
         Rigidbody = GetComponent<Rigidbody2D>();
 

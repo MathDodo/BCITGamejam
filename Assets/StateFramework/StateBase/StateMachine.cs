@@ -39,37 +39,31 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MachineOperator<
     /// The bool is used to enable either the state change by types or by state names
     /// </summary>
     /// <param name="useStateNames"></param>
-    public virtual void Init(bool useStateNames)
+    public virtual void Init()
     {
         //Making sure the functionality can only be run once
         if (allowedTypeStates == null && allowedStringStates == null)
         {
-            //If you dont want to use state names this will be run
-            if (!useStateNames)
-            {
-                //Instantiating the dictionary
-                allowedTypeStates = new Dictionary<Type, StateGeneric<T>>();
+            //Instantiating the dictionary
+            allowedTypeStates = new Dictionary<Type, StateGeneric<T>>();
 
-                //Adding states and types to the dictionary
-                for (int i = 0; i < specifiedController.AllowedStates.Count; i++)
-                {
-                    specifiedController.AllowedStates[i].SetStateType();
-                    allowedTypeStates.Add(specifiedController.AllowedStates[i].StateType, (StateGeneric<T>)specifiedController.AllowedStates[i]);
-                }
-            }
-            //If you want to change by state names
-            else
+            //Adding states and types to the dictionary
+            for (int i = 0; i < specifiedController.AllowedStates.Count; i++)
             {
-                //Instantiating the dictionary
-                allowedStringStates = new Dictionary<string, StateGeneric<T>>();
-
-                //Adding state and state names to the dictionary
-                for (int i = 0; i < specifiedController.AllowedStates.Count; i++)
-                {
-                    specifiedController.AllowedStates[i].SetStateType();
-                    allowedStringStates.Add(specifiedController.AllowedStates[i].StateName, (StateGeneric<T>)specifiedController.AllowedStates[i]);
-                }
+                specifiedController.AllowedStates[i].SetStateType();
+                allowedTypeStates.Add(specifiedController.AllowedStates[i].StateType, (StateGeneric<T>)specifiedController.AllowedStates[i]);
             }
+
+            //Instantiating the dictionary
+            allowedStringStates = new Dictionary<string, StateGeneric<T>>();
+
+            //Adding state and state names to the dictionary
+            for (int i = 0; i < specifiedController.AllowedStates.Count; i++)
+            {
+                specifiedController.AllowedStates[i].SetStateType();
+                allowedStringStates.Add(specifiedController.AllowedStates[i].StateName, (StateGeneric<T>)specifiedController.AllowedStates[i]);
+            }
+
         }
     }
 
@@ -119,7 +113,7 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MachineOperator<
         if (allowedStringStates.Keys.Contains(stateName) && !user.ActiveState)
         {
             //Setting the users active state
-            user.ActiveState = allowedTypeStates[t1];
+            user.ActiveState = allowedStringStates[stateName];
             //Entering the active state
             user.ActiveState.Enter(user);
         }
@@ -129,7 +123,7 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MachineOperator<
             //Exiting the active state at the user
             user.ActiveState.Exit(user);
             //Changing the active state to be the target state
-            user.ActiveState = allowedTypeStates[t1];
+            user.ActiveState = allowedStringStates[stateName];
             //Entering the new active state
             user.ActiveState.Enter(user);
         }

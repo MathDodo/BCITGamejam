@@ -30,7 +30,6 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
-
     }
 
     /// <summary>

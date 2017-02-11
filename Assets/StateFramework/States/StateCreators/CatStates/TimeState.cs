@@ -26,6 +26,8 @@ public class TimeState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
+        //Maybe timer>??
+
     }
 
     /// <summary>
@@ -34,6 +36,7 @@ public class TimeState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Exit(Cat user)
     {
+        Carousel.Instance.SwapCatBack();
     }
 
     /// <summary>

@@ -46,6 +46,7 @@ public class GravityState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Exit(Cat user)
     {
+        Carousel.Instance.SwapCatBack();
         user.Rigidbody.velocity = new Vector2(0, -20);
         Physics2D.gravity = new Vector2(0, -10);
     }
