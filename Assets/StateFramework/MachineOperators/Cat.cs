@@ -9,8 +9,15 @@ public class Cat : MachineOperator<Cat>
     //The mark of the target machine, also exposed to the inspector
     private MachineMarker targetMachine = MachineMarker.CatFSM;
 
+
+    [SerializeField]
+    private RuntimeAnimatorController c;
+
+    public Animator ting { get; private set; }
+
     private Animator animator;
     public Rigidbody2D Rigidbody { get; set; }
+
 
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
@@ -23,8 +30,10 @@ public class Cat : MachineOperator<Cat>
         //Calling the must run method for the machine instance, and enabling the change state with types
         MachineInstance.Init(useStateNames: false);
 
+
         animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody2D>();
+
         MachineInstance.ChangeState<NormalState>(this);
     }
 
@@ -35,6 +44,7 @@ public class Cat : MachineOperator<Cat>
     {
         //Update the active state
         MachineInstance.ExecuteActiveState(this);
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -57,5 +67,6 @@ public class Cat : MachineOperator<Cat>
         //Get the state in the carousel
 
         MachineInstance.ChangeState<GravityState>(this);
+
     }
 }

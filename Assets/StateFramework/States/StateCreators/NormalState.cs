@@ -11,6 +11,7 @@ public class NormalState : StateGeneric<Cat>
     [SerializeField]
     //The name of the state also exposed for the editor
     private string stateName = "NormalState";
+    
 
     [SerializeField]
     private RuntimeAnimatorController controller;
@@ -21,6 +22,7 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
+        
     }
 
     /// <summary>
@@ -29,6 +31,7 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
+
     }
 
     /// <summary>
