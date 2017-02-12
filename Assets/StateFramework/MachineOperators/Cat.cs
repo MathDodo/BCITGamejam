@@ -44,6 +44,9 @@ public class Cat : MachineOperator<Cat>
     private float jumpTimer;
     public float jumpDelay;
 
+    public AudioClip[] sounds;
+
+
     public float speed;
     private List<SkeletonAnimation> catimators;
 
@@ -136,6 +139,7 @@ public class Cat : MachineOperator<Cat>
             if (isJumping)
             {
                 item.AnimationName = "jump_up";
+               
                 item.loop = false;
             }
             //if the player is falling
@@ -154,7 +158,10 @@ public class Cat : MachineOperator<Cat>
 
         if (canJump && Input.GetKeyDown(KeyCode.W))
         {
+
+            PlaySound(1);
             isJumping = true;
+           
             Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
@@ -201,20 +208,26 @@ public class Cat : MachineOperator<Cat>
 
     public void Fire(GameObject hairBallPrefab, Transform hairBallSpawner)
     {
-        //Create the hairball!
-        var hairBall = Instantiate(hairBallPrefab, hairBallSpawner.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-        if (transform.localScale.x < 0)
-        {
-            hairBall.GetComponent<BulletController>().Init(-0.1f);
-        }
-        if (transform.localScale.x > 0)
-        {
-            hairBall.GetComponent<BulletController>().Init(0.1f);
-        }
+            //Create the hairball!
+            var hairBall = Instantiate(hairBallPrefab, hairBallSpawner.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+
+            if (transform.localScale.x < 0)
+            {
+                hairBall.GetComponent<BulletController>().Init(-0.1f);
+            }
+            if (transform.localScale.x > 0)
+            {
+                hairBall.GetComponent<BulletController>().Init(0.1f);
+            }
+
+       
+
+
     }
 
     public void ChangeCat(string name)
     {
+       
         if (name == "ghost")
         {
             ghostCat.enabled = true;
@@ -250,6 +263,14 @@ public class Cat : MachineOperator<Cat>
     {
         health -= amount;
 
+        //if (health > 0)
+        //{
+        //    takeDamage.Play();
+        //}
+        //else if (health <= 0 && lives < 0)
+        //{
+        //    deathAudio.Play();
+        //}
         if (health <= 0)
         {
             lives --;
@@ -318,6 +339,25 @@ public class Cat : MachineOperator<Cat>
         health = maxHealth;
         MachineInstance.ChangeState<NormalState>(this);
         transform.position = new Vector3(-5.18f, -2.14f, 15);
+    }
+
+    public void PlaySound(int clip)
+    {
+        
+        GetComponent<AudioSource>().clip = sounds[clip];
+        GetComponent<AudioSource>().Play();
+    }
+
+    public bool CheckSoundPlaying()
+    {
+        if (GetComponent<AudioSource>().isPlaying)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 
