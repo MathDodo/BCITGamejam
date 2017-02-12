@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
-  m_Name: SpaceCat2_Atlas
+  m_Name: SpaceCat_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 0bf6d3905e689b64fb363f7dba4cf7f2, type: 3}
+  atlasFile: {fileID: 4900000, guid: a009fd69954b079498235be97d0fc082, type: 3}
   materials:
-  - {fileID: 2100000, guid: f70e7ea2bed625f4689be190ac7ab8e2, type: 2}
+  - {fileID: 2100000, guid: 1cf5307b179cecd4f86f7ff2be7e3beb, type: 2}

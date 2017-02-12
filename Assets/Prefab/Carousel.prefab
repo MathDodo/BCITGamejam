@@ -187,7 +187,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7fd27e57c990c63418c18d50a7560fc7, type: 2}
+  - {fileID: 2100000, guid: f47612a07fb63734280a50a0be7ad4e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -249,7 +249,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7fd27e57c990c63418c18d50a7560fc7, type: 2}
+  - {fileID: 2100000, guid: 1cf5307b179cecd4f86f7ff2be7e3beb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -314,7 +314,7 @@ Animator:
   m_GameObject: {fileID: 1107681078421724}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 04999b778de17714f934706d63abdbff, type: 2}
+  m_Controller: {fileID: 9100000, guid: e66ce8f4451c5be4e819d1885b5dee69, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -348,7 +348,7 @@ Animator:
   m_GameObject: {fileID: 1223149454124430}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 04999b778de17714f934706d63abdbff, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5b1ea53e8f5248943b382792af50737d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9db98c60740638449864eb028fbe7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 6d6edce9677076743a324ac48165b334, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: ff180f0f122f85840be9de40785c1817, type: 2}
   initialSkinName: default
   separatorSlotNames: []
   zSpacing: 0
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9db98c60740638449864eb028fbe7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 6d6edce9677076743a324ac48165b334, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 4bce810bb00f57149828a30536cc226c, type: 2}
   initialSkinName: default
   separatorSlotNames: []
   zSpacing: 0
