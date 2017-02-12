@@ -26,6 +26,12 @@ public class IdleState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Execute(Dog user)
     {
+        user.IdleTimer -= Time.deltaTime;
+
+        if (user.IdleTimer <= 0)
+        {
+            user.MachineInstance.ChangeState<MovingState>(user);
+        }
     }
 
     /// <summary>
@@ -34,6 +40,7 @@ public class IdleState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Exit(Dog user)
     {
+        user.ResetIdleTimer();
     }
 
     /// <summary>

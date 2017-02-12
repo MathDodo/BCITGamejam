@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - HairBall
   - Cat
+  - Dog
   layers:
   - Default
   - TransparentFX

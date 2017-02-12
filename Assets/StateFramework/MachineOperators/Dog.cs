@@ -3,6 +3,7 @@ using UnityEngine;
 /// <summary>
 /// The class which can operate a machine where it is allowed
 /// </summary>
+[RequireComponent(typeof(Rigidbody2D))]
 public class Dog : MachineOperator<Dog>
 {
     [SerializeField]
@@ -18,12 +19,26 @@ public class Dog : MachineOperator<Dog>
     [SerializeField]
     private float attackDelay = 0.3f;
 
+    [SerializeField]
+    private float idleTime = 2.5f;
+
+    [SerializeField]
+    private float movingTime = 2;
+
+    [SerializeField]
+    private float startMovingDirection = 1;
+
     private Animator dogAnimator;
 
+    public float IdleTimer { get; set; }
+    public float MovingTimer { get; set; }
     public float AttackDelay { get; set; }
     public float AttackTimer { get; private set; }
+
     public bool IsTargetInRange { get; set; }
+    public Rigidbody2D RBody { get; private set; }
     public bool IsTargetInAttackRange { get; set; }
+    public float MovingDirection { get; private set; }
 
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
@@ -36,19 +51,22 @@ public class Dog : MachineOperator<Dog>
         //Calling the must run method for the machine instance, and enabling the change state with types
         MachineInstance.Init();
 
+        MachineInstance.ChangeState<IdleState>(this);
+
         dogAnimator = GetComponent<Animator>();
+
+        RBody = GetComponent<Rigidbody2D>();
+
+        MovingDirection = startMovingDirection;
+        IdleTimer = idleTime;
+        MovingTimer = movingTime;
     }
 
     private void Update()
     {
-        if (AttackTimer >= 0)
-        {
-            AttackTimer -= Time.deltaTime;
-        }
-
         if (!DimensionManager.Instance.FreezeTime)
         {
-            dogAnimator.speed = 1;
+            NotFrozenUpdate();
         }
         else
         {
@@ -57,10 +75,38 @@ public class Dog : MachineOperator<Dog>
         }
     }
 
+    private void NotFrozenUpdate()
+    {
+        //dogAnimator.speed = 1;
+        if (GameManager.Instance.Player)
+        {
+            //GameManager.Instance.Player
+        }
+
+
+        if (AttackTimer >= 0)
+        {
+            AttackTimer -= Time.deltaTime;
+        }
+
+        MachineInstance.ExecuteActiveState(this);
+    }
+
     public void ResetAttack()
     {
         AttackTimer = timeBetweenAttacks;
         AttackDelay = attackDelay;
+    }
+
+    public void ResetIdleTimer()
+    {
+        IdleTimer = idleTime;
+    }
+
+    public void ResetMovingTimer()
+    {
+        MovingTimer = movingTime;
+        MovingDirection *= -1;
     }
 
     public void ChangeAnimation(string animationName)
@@ -75,7 +121,7 @@ public class Dog : MachineOperator<Dog>
 
         if (health <= 0)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }

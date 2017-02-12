@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -7,18 +6,23 @@ using UnityEngine;
 public class Cat : MachineOperator<Cat>
 {
     [SerializeField]
+    private int health = 100;
+
+    [SerializeField]
     //The mark of the target machine, also exposed to the inspector
     private MachineMarker targetMachine = MachineMarker.CatFSM;
 
-    private Animator animator;
-    public Rigidbody2D Rigidbody { get; set; }
+    private float xScale;
     private bool canJump;
-    public GameObject hairBallPrefab;
-    public Transform hairBallSpawner;
     private Vector3 curLoc;
     private Vector3 preLoc;
-    private float xScale;
-    
+    private Animator animator;
+
+    public GameObject hairBallPrefab;
+    public Transform hairBallSpawner;
+
+    public Rigidbody2D Rigidbody { get; set; }
+
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
     /// <summary>
@@ -35,6 +39,8 @@ public class Cat : MachineOperator<Cat>
         MachineInstance.ChangeState<NormalState>(this);
 
         xScale = transform.localScale.x;
+
+        GameManager.Instance.Player = this;
     }
 
     /// <summary>
@@ -92,12 +98,7 @@ public class Cat : MachineOperator<Cat>
         {
             hairBall.GetComponent<BulletController>().Init(0.1f);
         }
-
-        //Rigidbody2D rigidBody = hairBall.GetComponent<Rigidbody2D>();
-        //rigidBody.AddForce(hairBall.transform.right * 750f);
-        //Debug.Log(rigidBody);
-
-
+        
         Destroy(hairBall, 5.0f);
     }
 
@@ -124,7 +125,7 @@ public class Cat : MachineOperator<Cat>
         }
         if (canJump && Input.GetKeyDown(KeyCode.W))
         {
-            Rigidbody.AddForce(Vector2.up*250);
+            Rigidbody.AddForce(Vector2.up * 250);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -133,18 +134,31 @@ public class Cat : MachineOperator<Cat>
         //left movement
         if (Input.GetKey(KeyCode.A))
         {
-            curLoc -= new Vector3(1*Time.fixedDeltaTime, 0);
+            curLoc -= new Vector3(10*Time.fixedDeltaTime, 0);
+
+
             transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
         }
         //Right movement
         if (Input.GetKey(KeyCode.D))
         {
-            curLoc += new Vector3(1*Time.fixedDeltaTime, 0);
+            curLoc += new Vector3(10*Time.fixedDeltaTime, 0);
+
+
             transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
-            
         }
 
         transform.position = curLoc;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
 
