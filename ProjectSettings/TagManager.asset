@@ -9,6 +9,8 @@ TagManager:
   - Cat
   - Dog
   - Hule
+  - DeadlyCeiling
+  - GhostTrap
   layers:
   - Default
   - TransparentFX

@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 33361934618019240}
   - component: {fileID: 23264515015776642}
   - component: {fileID: 61103486576801346}
-  - component: {fileID: 114109692038862460}
   m_Layer: 0
   m_Name: Spear
   m_TagString: Untagged
@@ -56,6 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4302684233996250}
   - component: {fileID: 111911043341004372}
+  - component: {fileID: 114990993766515666}
   m_Layer: 0
   m_Name: SpearTrap
   m_TagString: Untagged
@@ -69,8 +69,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1867788716291408}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9, y: -2.7154646, z: 0}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 49.34, y: 4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4596793063338694}
@@ -209,12 +209,12 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114109692038862460
+--- !u!114 &114990993766515666
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1113441858941606}
+  m_GameObject: {fileID: 1867788716291408}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40eb1b6318c1efb44ac05842dfb694d5, type: 3}
