@@ -30,6 +30,11 @@ public class MovingState : StateGeneric<Dog>
 
         user.RBody.velocity = new Vector2(user.MovingDirection * Time.deltaTime, user.RBody.velocity.y);
 
+        if (user.IsTargetInRange)
+        {
+            user.MachineInstance.ChangeState<AgressiveState>(user);
+        }
+
         if (user.MovingTimer <= 0)
         {
             user.MachineInstance.ChangeState<IdleState>(user);

@@ -98,7 +98,7 @@ public class Cat : MachineOperator<Cat>
         {
             hairBall.GetComponent<BulletController>().Init(0.1f);
         }
-        
+
         Destroy(hairBall, 5.0f);
     }
 
@@ -117,7 +117,6 @@ public class Cat : MachineOperator<Cat>
     {
         preLoc = curLoc;
 
-
         curLoc = transform.position;
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -135,7 +134,7 @@ public class Cat : MachineOperator<Cat>
         if (Input.GetKey(KeyCode.A))
         {
 
-            curLoc -= new Vector3(10*Time.fixedDeltaTime, 0);
+            curLoc -= new Vector3(10 * Time.fixedDeltaTime, 0);
 
             curLoc -= new Vector3(1 * Time.fixedDeltaTime, 0);
 
@@ -144,13 +143,11 @@ public class Cat : MachineOperator<Cat>
         //Right movement
         if (Input.GetKey(KeyCode.D))
         {
-
-            curLoc += new Vector3(10*Time.fixedDeltaTime, 0);
+            curLoc += new Vector3(10 * Time.fixedDeltaTime, 0);
 
             curLoc += new Vector3(1 * Time.fixedDeltaTime, 0);
 
             transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
-
         }
 
         transform.position = curLoc;

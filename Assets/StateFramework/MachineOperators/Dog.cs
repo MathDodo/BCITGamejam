@@ -32,10 +32,13 @@ public class Dog : MachineOperator<Dog>
     private float targetingDistance = 15;
 
     [SerializeField]
-    private float attackDistance = 3;
+    private float attackDistance = 5f;
 
     [SerializeField]
     private State activeState;
+
+    [SerializeField]
+    private int damage = 10;
 
     private Animator dogAnimator;
 
@@ -48,7 +51,7 @@ public class Dog : MachineOperator<Dog>
     public Rigidbody2D RBody { get; private set; }
     public bool IsTargetInAttackRange { get; set; }
     public float MovingDirection { get; private set; }
-
+    public int Damage { get { return damage; } }
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
     /// <summary>
@@ -94,11 +97,6 @@ public class Dog : MachineOperator<Dog>
             IsTargetInAttackRange = Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= attackDistance;
         }
 
-        if (IsTargetInRange)
-        {
-            MachineInstance.ChangeState<AgressiveState>(this);
-        }
-
         if (AttackTimer >= 0)
         {
             AttackTimer -= Time.deltaTime;
@@ -111,6 +109,8 @@ public class Dog : MachineOperator<Dog>
     {
         AttackTimer = timeBetweenAttacks;
         AttackDelay = attackDelay;
+        IsTargetInAttackRange = false;
+        IsTargetInRange = false;
     }
 
     public void ResetIdleTimer()

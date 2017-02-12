@@ -378,9 +378,10 @@ MonoBehaviour:
   attackDelay: 0.3
   idleTime: 2.5
   movingTime: 2
-  startMovingDirection: 1
-  targetingDistance: 15
-  attackDistance: 3
+  startMovingDirection: 100
+  targetingDistance: 4
+  attackDistance: 1.2
+  activeState: {fileID: 0}
 --- !u!50 &757234528
 Rigidbody2D:
   serializedVersion: 4
@@ -475,6 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 805756539}
   - component: {fileID: 805756540}
+  - component: {fileID: 805756541}
   m_Layer: 0
   m_Name: Management
   m_TagString: Untagged
@@ -504,6 +506,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18152a2cd164c8147845f2a7ca2f3e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnload: 0
+--- !u!114 &805756541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805756538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2d2a1a50bbac04f9ac76136f1a5f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnload: 0

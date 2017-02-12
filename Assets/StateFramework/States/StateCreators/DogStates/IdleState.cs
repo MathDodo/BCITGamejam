@@ -28,6 +28,11 @@ public class IdleState : StateGeneric<Dog>
     {
         user.IdleTimer -= Time.deltaTime;
 
+        if (user.IsTargetInRange)
+        {
+            user.MachineInstance.ChangeState<AgressiveState>(user);
+        }
+
         if (user.IdleTimer <= 0)
         {
             user.MachineInstance.ChangeState<MovingState>(user);

@@ -28,13 +28,13 @@ public class AgressiveState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Execute(Dog user)
     {
-        if (GameManager.Instance.Player.transform.position.x < user.transform.position.x)
+        if (GameManager.Instance.Player.transform.position.x + 1f < user.transform.position.x)
         {
-            direction = -150;
+            direction = -75;
         }
-        else if (GameManager.Instance.Player.transform.position.x > user.transform.position.x)
+        else if (GameManager.Instance.Player.transform.position.x - 1f > user.transform.position.x)
         {
-            direction = 150;
+            direction = 75;
         }
         else
         {
@@ -42,12 +42,14 @@ public class AgressiveState : StateGeneric<Dog>
             return;
         }
 
-        user.RBody.velocity = new Vector2(direction * Time.deltaTime, 0);
-
         if (user.IsTargetInAttackRange && user.AttackTimer <= 0)
         {
             user.ResetAttack();
             user.MachineInstance.ChangeState<AttackState>(user);
+        }
+        else if (!user.IsTargetInAttackRange)
+        {
+            user.RBody.velocity = new Vector2(direction * Time.deltaTime, 0);
         }
     }
 
