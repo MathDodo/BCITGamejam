@@ -31,10 +31,12 @@ public class AttackState : StateGeneric<Dog>
         if (user.AttackDelay <= 0 && user.IsTargetInAttackRange)
         {
             //Deal damage to target
+            GameManager.Instance.Player.TakeDamage(user.Damage);
+            user.ResetAttack();
         }
         else if (!user.IsTargetInAttackRange)
         {
-
+            user.MachineInstance.ChangeState<IdleState>(user);
         }
     }
 

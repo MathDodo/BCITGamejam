@@ -8,8 +8,11 @@ public class Carousel : Singleton<Carousel>
 {
     [SerializeField]
     private Cat player;
-    private List<Vector3> catPos = new List<Vector3> { new Vector2(-1, -1), new Vector2(0, -1), new Vector2(1, -1) };
-    private List<Vector2> catScales = new List<Vector2> { new Vector2(.25f, .25f), new Vector2(.5f, .5f), new Vector2(.25f, .25f) };
+
+    private float y = -.7f;
+
+    private List<Vector3> catPos;
+    private List<Vector2> catScales;
     private List<MirrorCat> Cats = new List<MirrorCat>();
     private MirrorCat normalCat;
     private bool canRotate;
@@ -21,6 +24,10 @@ public class Carousel : Singleton<Carousel>
     /// </summary>
     void Start()
     {
+        catPos = new List<Vector3> { new Vector2(-1, y), new Vector2(0, y), new Vector2(1, y) };
+        catScales = new List<Vector2>() { new Vector2(.3f, -.3f), new Vector2(.5f, -.5f), new Vector2(.3f, -.3f) };
+
+
         //Get all the children
         foreach (Transform item in transform)
         {
@@ -46,6 +53,8 @@ public class Carousel : Singleton<Carousel>
             Rotate(1);
         if (Input.GetKeyDown(KeyCode.Space))
             SwapCat();
+
+        transform.position = new Vector2(player.transform.position.x, transform.position.y);
     }
 
     /// <summary>
