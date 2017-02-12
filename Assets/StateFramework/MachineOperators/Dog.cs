@@ -28,6 +28,15 @@ public class Dog : MachineOperator<Dog>
     [SerializeField]
     private float startMovingDirection = 1;
 
+    [SerializeField]
+    private float targetingDistance = 15;
+
+    [SerializeField]
+    private float attackDistance = 3;
+
+    [SerializeField]
+    private State activeState;
+
     private Animator dogAnimator;
 
     public float IdleTimer { get; set; }
@@ -64,6 +73,7 @@ public class Dog : MachineOperator<Dog>
 
     private void Update()
     {
+        activeState = ActiveState;
         if (!DimensionManager.Instance.FreezeTime)
         {
             NotFrozenUpdate();
@@ -80,9 +90,14 @@ public class Dog : MachineOperator<Dog>
         //dogAnimator.speed = 1;
         if (GameManager.Instance.Player)
         {
-            //GameManager.Instance.Player
+            IsTargetInRange = Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= targetingDistance;
+            IsTargetInAttackRange = Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= attackDistance;
         }
 
+        if (IsTargetInRange)
+        {
+            MachineInstance.ChangeState<AgressiveState>(this);
+        }
 
         if (AttackTimer >= 0)
         {

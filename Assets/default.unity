@@ -379,6 +379,8 @@ MonoBehaviour:
   idleTime: 2.5
   movingTime: 2
   startMovingDirection: 1
+  targetingDistance: 15
+  attackDistance: 3
 --- !u!50 &757234528
 Rigidbody2D:
   serializedVersion: 4
@@ -474,7 +476,7 @@ GameObject:
   - component: {fileID: 805756539}
   - component: {fileID: 805756540}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Management
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -536,6 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6469b7a96e334e498bfd7bcddf6a06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   targetMachine: 0
   hairBallPrefab: {fileID: 1167628260087102, guid: 8ac40931a90540442ac1601e6924ab5b,
     type: 2}
