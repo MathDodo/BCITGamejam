@@ -36,6 +36,8 @@ public class Cat : MachineOperator<Cat>
     private Vector3 preLoc;
     private SkeletonAnimator skAnimator;
 
+    private SpriteRenderer spr;
+
     private bool isWalking;
     private bool isJumping;
     private bool canJump;
@@ -163,7 +165,7 @@ public class Cat : MachineOperator<Cat>
         //left movement
         if (Input.GetKey(KeyCode.A))
         {
-            curLoc -= new Vector3(speed * Time.fixedDeltaTime, 0);
+            curLoc -= new Vector3(speed * Time.deltaTime, 0);
             isWalking = true;
             transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
 
@@ -181,7 +183,7 @@ public class Cat : MachineOperator<Cat>
         //Right movement
         if (Input.GetKey(KeyCode.D))
         {
-            curLoc += new Vector3(speed * Time.fixedDeltaTime, 0);
+            curLoc += new Vector3(speed * Time.deltaTime, 0);
             isWalking = true;
             transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
 
@@ -213,6 +215,8 @@ public class Cat : MachineOperator<Cat>
         }
     }
 
+    public GameObject portal;
+
     public void ChangeCat(string name)
     {
         if (name == "ghost")
@@ -238,6 +242,7 @@ public class Cat : MachineOperator<Cat>
             }
         }
 
+        Instantiate(portal, transform.position + new Vector3(.6f, .6f), Quaternion.identity);
     }
 
     public void ChangeCollisionLayer(string layerName)
@@ -252,7 +257,7 @@ public class Cat : MachineOperator<Cat>
 
         if (health <= 0)
         {
-            lives --;
+            lives--;
             if (lives > 0)
             {
                 Respawn();
@@ -284,7 +289,7 @@ public class Cat : MachineOperator<Cat>
         if (collision.gameObject.tag == "Hole")
         {
             TakeDamage(health);
-            
+
         }
         else if (collision.gameObject.tag == "DeadlyCeiling")
         {
