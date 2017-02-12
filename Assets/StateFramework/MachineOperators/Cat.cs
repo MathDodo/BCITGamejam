@@ -16,6 +16,11 @@ public class Cat : MachineOperator<Cat>
     private bool canJump;
     private Vector3 curLoc;
     private Vector3 preLoc;
+    [SerializeField] private State s;
+    [SerializeField]
+    private SpriteRenderer ghostCat;
+    private MeshRenderer otherCats;
+
     private Animator animator;
 
     public GameObject hairBallPrefab;
@@ -35,12 +40,14 @@ public class Cat : MachineOperator<Cat>
         MachineInstance.Init();
 
         Rigidbody = GetComponent<Rigidbody2D>();
-
         MachineInstance.ChangeState<NormalState>(this);
+        xScale = transform.localScale.x;
+        otherCats = GetComponent<MeshRenderer>();
 
         xScale = transform.localScale.x;
 
         GameManager.Instance.Player = this;
+        DisableGhost();
     }
 
     /// <summary>
@@ -51,7 +58,7 @@ public class Cat : MachineOperator<Cat>
         //Update the active state
         MachineInstance.ExecuteActiveState(this);
 
-
+        s = ActiveState;
         InputListen();
     }
 
@@ -98,7 +105,7 @@ public class Cat : MachineOperator<Cat>
         {
             hairBall.GetComponent<BulletController>().Init(0.1f);
         }
-        
+
         Destroy(hairBall, 5.0f);
     }
 
@@ -117,7 +124,6 @@ public class Cat : MachineOperator<Cat>
     {
         preLoc = curLoc;
 
-
         curLoc = transform.position;
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -134,16 +140,14 @@ public class Cat : MachineOperator<Cat>
         //left movement
         if (Input.GetKey(KeyCode.A))
         {
-            curLoc -= new Vector3(10*Time.fixedDeltaTime, 0);
-
+            curLoc -= new Vector3(10 * Time.fixedDeltaTime, 0);
 
             transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
         }
         //Right movement
         if (Input.GetKey(KeyCode.D))
         {
-            curLoc += new Vector3(10*Time.fixedDeltaTime, 0);
-
+            curLoc += new Vector3(10 * Time.fixedDeltaTime, 0);
 
             transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
         }
@@ -159,6 +163,18 @@ public class Cat : MachineOperator<Cat>
         {
             Destroy(gameObject);
         }
+    }
+
+    public void EnableGhost()
+    {
+        ghostCat.enabled = true;
+        otherCats.enabled = false;
+    }
+
+    public void DisableGhost()
+    {
+        ghostCat.enabled = false;
+        otherCats.enabled = true;
     }
 }
 

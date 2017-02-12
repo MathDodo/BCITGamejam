@@ -23,6 +23,7 @@ public class CameraManager : Singleton<CameraManager>
     // Update is called once per frame
     private void Update()
     {
-        transform.position = new Vector3(targetTransform.position.x, targetTransform.position.y + yOffset, -10);
+        if (target)
+            transform.position = new Vector3(targetTransform.position.x, targetTransform.position.y + yOffset, -10);
     }
 }
