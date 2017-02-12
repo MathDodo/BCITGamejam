@@ -6,17 +6,22 @@ using UnityEngine;
 public class Cat : MachineOperator<Cat>
 {
     [SerializeField]
+    private int health = 100;
+
+    [SerializeField]
     //The mark of the target machine, also exposed to the inspector
     private MachineMarker targetMachine = MachineMarker.CatFSM;
 
-    private Animator animator;
-    public Rigidbody2D Rigidbody { get; set; }
+    private float xScale;
     private bool canJump;
-    public GameObject hairBallPrefab;
-    public Transform hairBallSpawner;
     private Vector3 curLoc;
     private Vector3 preLoc;
-    private float xScale;
+    private Animator animator;
+
+    public GameObject hairBallPrefab;
+    public Transform hairBallSpawner;
+
+    public Rigidbody2D Rigidbody { get; set; }
 
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
@@ -34,6 +39,8 @@ public class Cat : MachineOperator<Cat>
         MachineInstance.ChangeState<NormalState>(this);
 
         xScale = transform.localScale.x;
+
+        GameManager.Instance.Player = this;
     }
 
     /// <summary>
@@ -144,6 +151,16 @@ public class Cat : MachineOperator<Cat>
         }
 
         transform.position = curLoc;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

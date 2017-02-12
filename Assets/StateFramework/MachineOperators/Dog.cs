@@ -78,6 +78,11 @@ public class Dog : MachineOperator<Dog>
     private void NotFrozenUpdate()
     {
         //dogAnimator.speed = 1;
+        if (GameManager.Instance.Player)
+        {
+            //GameManager.Instance.Player
+        }
+
 
         if (AttackTimer >= 0)
         {
