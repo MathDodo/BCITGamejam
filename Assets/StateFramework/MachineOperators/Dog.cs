@@ -1,4 +1,5 @@
 using UnityEngine;
+using Spine.Unity;
 
 /// <summary>
 /// The class which can operate a machine where it is allowed
@@ -40,7 +41,7 @@ public class Dog : MachineOperator<Dog>
     [SerializeField]
     private int damage = 10;
 
-    private Animator dogAnimator;
+    private SkeletonAnimation dogAnimator;
 
     public float IdleTimer { get; set; }
     public float MovingTimer { get; set; }
@@ -57,6 +58,7 @@ public class Dog : MachineOperator<Dog>
     /// <summary>
     private void Start()
     {
+        dogAnimator = GetComponent<SkeletonAnimation>();
         //Running the init of the machineoperator, to find the machine instance
         Init(targetMachine);
 
@@ -65,7 +67,6 @@ public class Dog : MachineOperator<Dog>
 
         MachineInstance.ChangeState<IdleState>(this);
 
-       // dogAnimator = GetComponent<Animator>();
 
         RBody = GetComponent<Rigidbody2D>();
 
@@ -79,12 +80,13 @@ public class Dog : MachineOperator<Dog>
         activeState = ActiveState;
         if (!DimensionManager.Instance.FreezeTime)
         {
+            dogAnimator.timeScale = 1;
+
             NotFrozenUpdate();
         }
         else
         {
-            //Not sure about this one
-         //   dogAnimator.speed = 0;
+            dogAnimator.timeScale = 0;
         }
     }
 
@@ -126,8 +128,33 @@ public class Dog : MachineOperator<Dog>
 
     public void ChangeAnimation(string animationName)
     {
-        //Do this when animator is made
-        //dogAnimator.Play(animationName);
+        switch (animationName)
+        {
+            case "Run":
+                SetAnimation("walking", 1.5f);
+                break;
+            case "Walk":
+                SetAnimation("walking");
+                break;
+            case "Attack":
+                SetAnimation("attack");
+                break;
+            case "Idle":
+                SetAnimation("idle");
+                break;
+        }
+    }
+
+    private void SetAnimation(string name)
+    {
+        SetAnimation(name, 1);
+    }
+
+    private void SetAnimation(string name, float timescale)
+    {
+        dogAnimator.AnimationName = name;
+        dogAnimator.timeScale = timescale;
+        dogAnimator.loop = true;
     }
 
     public void TakeDamage(int damage)
