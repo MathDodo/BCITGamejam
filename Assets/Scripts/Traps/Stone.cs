@@ -9,6 +9,7 @@ public class Stone : MonoBehaviour
     private Transform player;
     private bool startMoving;
     public Vector2 velocity;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -23,13 +24,13 @@ public class Stone : MonoBehaviour
         if (!DimensionManager.Instance.FreezeTime && !GameObject.FindWithTag("GhostTrap"))
         {
 
-            if (player.transform.position.x <= 15)
+            if (Vector2.Distance(player.transform.position,transform.position) <= 10)
             {
                 GetComponent<Rigidbody2D>().simulated = true;
             }
             if (startMoving)
             {
-                velocity = new Vector2(-1, 0);
+                velocity = new Vector2(-2, 0);
                 Rigidbody2D rb2D = GetComponent<Rigidbody2D>();
                 rb2D.velocity = new Vector2(velocity.x, rb2D.velocity.y);
             }

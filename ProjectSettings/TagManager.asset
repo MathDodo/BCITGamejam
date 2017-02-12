@@ -12,6 +12,7 @@ TagManager:
   - GhostTrap
   - Hole
   - Portal
+  - OutOfSpace
   layers:
   - Default
   - TransparentFX
