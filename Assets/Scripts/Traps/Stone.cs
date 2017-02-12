@@ -13,22 +13,29 @@ public class Stone : MonoBehaviour
 	void Start ()
 	{
 	    
-        player = GameObject.FindWithTag("Player").transform;
+        player = GameObject.FindWithTag("Cat").transform;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    if (player.transform.position.x <= 100)
-	    {
-            GetComponent<Rigidbody2D>().simulated = true;
+       
+        if (!DimensionManager.Instance.FreezeTime && !GameObject.FindWithTag("GhostTrap"))
+        {
+
+            if (player.transform.position.x <= 100)
+            {
+                GetComponent<Rigidbody2D>().simulated = true;
+            }
+            if (startMoving)
+            {
+                velocity = new Vector2(-10, 0);
+                Rigidbody2D rb2D = GetComponent<Rigidbody2D>();
+                rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
+            }
         }
-	    if (startMoving)
-	    {
-	        velocity = new Vector2(-10,0);
-	        Rigidbody2D rb2D = GetComponent<Rigidbody2D>();
-            rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
-	    }
+       
+        
        
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,7 +43,7 @@ public class Stone : MonoBehaviour
        
        
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Cat")
         {
             if (collision.collider.GetComponent<Cat>().ActiveState.StateType != typeof (NormalState))
             {

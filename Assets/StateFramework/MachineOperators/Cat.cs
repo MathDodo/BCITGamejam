@@ -210,6 +210,7 @@ public class Cat : MachineOperator<Cat>
         {
             Destroy(gameObject);
         }
+        Debug.Log(health);
     }
 
     public void FlipDelayed()

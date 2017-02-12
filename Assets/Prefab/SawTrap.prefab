@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4637929687584994}
   - component: {fileID: 111590912760607140}
+  - component: {fileID: 114197395564262282}
+  - component: {fileID: 58503929324393992}
   m_Layer: 0
   m_Name: SawTrap
   m_TagString: Untagged
@@ -89,7 +91,6 @@ GameObject:
   - component: {fileID: 33971782999914802}
   - component: {fileID: 23426959923407610}
   - component: {fileID: 58155537271772676}
-  - component: {fileID: 114030208622473904}
   m_Layer: 0
   m_Name: SawBlade
   m_TagString: Untagged
@@ -327,7 +328,21 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.6085762
+--- !u!58 &58503929324393992
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1218064764696914}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -347,12 +362,12 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114030208622473904
+--- !u!114 &114197395564262282
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1943787468027268}
+  m_GameObject: {fileID: 1218064764696914}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40eb1b6318c1efb44ac05842dfb694d5, type: 3}

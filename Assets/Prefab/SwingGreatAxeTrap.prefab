@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4038016233825656}
   - component: {fileID: 111711868325553280}
   - component: {fileID: 114222361838732250}
+  - component: {fileID: 58088120289140126}
   m_Layer: 0
   m_Name: SwingGreatAxeTrap
   m_TagString: Untagged
@@ -180,6 +181,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317605140158312}
   m_Mesh: {fileID: 4300000, guid: bab1d8e407bbb19498ba98659c7ea4af, type: 3}
+--- !u!58 &58088120289140126
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1391711214919230}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -2.0181832}
+  serializedVersion: 2
+  m_Radius: 2.6083384
 --- !u!58 &58412343898788452
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -189,7 +204,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -2.0181832}
   serializedVersion: 2

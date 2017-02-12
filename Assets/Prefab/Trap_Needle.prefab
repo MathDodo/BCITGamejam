@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4325213317475400}
   - component: {fileID: 111499060047109510}
   - component: {fileID: 114478189391123434}
+  - component: {fileID: 58701588666143496}
   m_Layer: 0
   m_Name: Trap_Needle
   m_TagString: Untagged
@@ -189,7 +190,21 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.0019949232, y: 0.24579579}
+  serializedVersion: 2
+  m_Radius: 0.2702992
+--- !u!58 &58701588666143496
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1588474241480092}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0.0019949232, y: 0.24579579}
   serializedVersion: 2

@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 33723085835292460}
   - component: {fileID: 23956764907112618}
   - component: {fileID: 58213664186829390}
-  - component: {fileID: 114676996959552362}
   m_Layer: 0
   m_Name: Cutter
   m_TagString: Untagged
@@ -56,6 +55,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4738417569087510}
   - component: {fileID: 111591302368480976}
+  - component: {fileID: 114779833197518694}
+  - component: {fileID: 58717029878001152}
   m_Layer: 0
   m_Name: Trap_Cutter
   m_TagString: Untagged
@@ -189,6 +190,20 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.0018178225, y: 0.3041516}
+  serializedVersion: 2
+  m_Radius: 0.7124721
+--- !u!58 &58717029878001152
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587791537736266}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: -0.0018178225, y: 0.3041516}
@@ -210,12 +225,12 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114676996959552362
+--- !u!114 &114779833197518694
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1572140280435968}
+  m_GameObject: {fileID: 1587791537736266}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40eb1b6318c1efb44ac05842dfb694d5, type: 3}
