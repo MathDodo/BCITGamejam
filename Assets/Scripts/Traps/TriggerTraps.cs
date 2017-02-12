@@ -40,4 +40,20 @@ public class TriggerTraps : MonoBehaviour
 
         }
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Cat")
+        {
+            if (other.GetComponent<Cat>().ActiveState.StateType != typeof(NormalState))
+            {
+                other.GetComponent<Cat>().TakeDamage(100);
+            }
+            else
+            {
+                other.GetComponent<Cat>().TakeDamage(damage);
+            }
+
+        }
+    }
 }

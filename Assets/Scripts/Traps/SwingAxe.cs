@@ -6,9 +6,13 @@ public class SwingAxe : MonoBehaviour
 {
 
     public int damage;
+    private float timerBetweenAttacks;
+   
+    
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
+	   
 	}
 	
 	// Update is called once per frame
@@ -21,24 +25,43 @@ public class SwingAxe : MonoBehaviour
 
             anim.enabled = false;
         }
+
+	    if (timerBetweenAttacks >= 0)
+	    {
+	        timerBetweenAttacks -= Time.deltaTime;
+	    }
        
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-       
+        timerBetweenAttacks = 3;
 
 
-        if (other.gameObject.tag == "Cat")
+        if (other.GetComponent<Cat>().ActiveState.StateType != typeof(NormalState))
         {
-            if (other.collider.GetComponent<Cat>().ActiveState.StateType != typeof(NormalState))
+            other.GetComponent<Cat>().TakeDamage(100);
+        }
+        else
+        {
+            other.GetComponent<Cat>().TakeDamage(damage);
+        }
+
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        
+        if (timerBetweenAttacks <= 0)
+        {
+            if (other.GetComponent<Cat>().ActiveState.StateType != typeof(NormalState))
             {
-                other.collider.GetComponent<Cat>().TakeDamage(100);
+                other.GetComponent<Cat>().TakeDamage(100);
             }
             else
             {
-                other.collider.GetComponent<Cat>().TakeDamage(damage);
+                other.GetComponent<Cat>().TakeDamage(damage);
             }
-
+            timerBetweenAttacks = 3;
         }
         
     }
