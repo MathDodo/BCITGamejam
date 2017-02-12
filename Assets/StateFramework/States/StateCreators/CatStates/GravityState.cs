@@ -14,7 +14,8 @@ public class GravityState : StateGeneric<Cat>
     [SerializeField]
     private float exitTimer = 2;
 
-    private float timer;
+    private float gravityTimer;
+    private Vector3 userScaler;
 
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
@@ -22,9 +23,16 @@ public class GravityState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
+        user.ChangeCat("space");
+
         user.Rigidbody.velocity = new Vector2(0, 20);
         Physics2D.gravity = new Vector2(0, 10);
-        timer = exitTimer;
+
+        userScaler = user.transform.localScale;
+        userScaler.y *= -1;
+        user.transform.localScale = userScaler;
+
+        gravityTimer = exitTimer;
     }
 
 
@@ -34,10 +42,10 @@ public class GravityState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
-        if (timer <= 0)
+        if (gravityTimer <= 0)
             user.MachineInstance.ChangeState<NormalState>(user);
         else
-            timer -= Time.deltaTime;
+            gravityTimer -= Time.deltaTime;
     }
 
     /// <summary>
@@ -49,6 +57,10 @@ public class GravityState : StateGeneric<Cat>
         Carousel.Instance.SwapCatBack();
         user.Rigidbody.velocity = new Vector2(0, -20);
         Physics2D.gravity = new Vector2(0, -10);
+
+        userScaler = user.transform.localScale;
+        userScaler.y *= -1;
+        user.transform.localScale = userScaler;
     }
 
     /// <summary>

@@ -15,12 +15,19 @@ public class TriggerTraps : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        var anim = GetComponent<Animation>();
+        anim.enabled = true;
+        if (DimensionManager.Instance.FreezeTime && !GameObject.FindWithTag("GhostTrap"))
+        {
+
+            anim.enabled = false;
+        }
+
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Cat")
         {
             if (other.GetComponent<Cat>().ActiveState.StateType != typeof(NormalState))
             {
