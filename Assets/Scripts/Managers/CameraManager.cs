@@ -18,12 +18,13 @@ public class CameraManager : Singleton<CameraManager>
     {
         cam = GetComponent<Camera>();
         targetTransform = target.transform;
+        transform.position = new Vector3(targetTransform.position.x, targetTransform.position.y + yOffset, -10);
     }
 
     // Update is called once per frame
     private void Update()
     {
         if (target)
-            transform.position = new Vector3(targetTransform.position.x, targetTransform.position.y + yOffset, -10);
+            transform.position = new Vector3(targetTransform.position.x, 0, -10);
     }
 }
