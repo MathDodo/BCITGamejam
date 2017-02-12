@@ -4,19 +4,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Text))]
 public class CatUI : MonoBehaviour
 {
-    private Text text;
-    private Cat player;
-
-    // Use this for initialization
-    private void Start()
-    {
-        text = GetComponent<Text>();
-        player = GameManager.Instance.Player;
-    }
-
+    public Text text;
+   
     // Update is called once per frame
     private void Update()
     {
-        text.text = "Lives: " + player.Lives + "\nHealth: " + player.Health;
+        text.text = "Lives: " + GameManager.Instance.Player.Lives + "\nHealth: " + GameManager.Instance.Player.Health;
     }
 }

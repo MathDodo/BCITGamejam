@@ -468,7 +468,7 @@ MonoBehaviour:
   hairBallSpawner: {fileID: 4930540312906738}
   jumpForce: 20
   jumpDelay: 0.5
-  speed: 5
+  speed: 6
 --- !u!212 &212634959004579116
 SpriteRenderer:
   m_ObjectHideFlags: 1
