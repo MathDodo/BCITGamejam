@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: TimeState
   m_EditorClassIdentifier: 
   stateName: TimeState
-  exitTime: 5
+  exitTime: 2

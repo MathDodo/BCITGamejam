@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: GhostState
   m_EditorClassIdentifier: 
   stateName: GhostState
-  exitTimer: 5
+  exitTimer: 2

@@ -71,6 +71,9 @@ public class Cat : MachineOperator<Cat>
 
     }
 
+    private float jumpTimer;
+    public float jumpDelay;
+
     /// <summary>
     /// Update
     /// </summary>
@@ -82,13 +85,16 @@ public class Cat : MachineOperator<Cat>
         canJump = false;
 
         RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, Vector2.down, .05f);
-        if (hit != null && hit.Where(x => x.collider.gameObject.tag == "Floor").Any())
+        if (hit != null && hit.Where(x => x.collider.gameObject.tag == "Floor").Any() && jumpTimer <= 0)
         {
             if (isJumping)
                 isJumping = false;
 
             canJump = true;
         }
+
+        if (jumpTimer > 0)
+            jumpTimer -= Time.deltaTime;
 
         InputListen();
         SetBoolInAnimators();

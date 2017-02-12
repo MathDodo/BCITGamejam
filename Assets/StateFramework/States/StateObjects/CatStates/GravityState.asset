@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: GravityState
   m_EditorClassIdentifier: 
   stateName: GravityState
-  exitTimer: 5
+  exitTimer: 2

@@ -239,6 +239,11 @@ Prefab:
       propertyPath: attackTimer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114564998778048204, guid: 6d570b5d300cea84abf48b1504346884,
+        type: 2}
+      propertyPath: jumpDelay
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 70627622257154900, guid: 6d570b5d300cea84abf48b1504346884, type: 2}
     - {fileID: 50978614495958912, guid: 6d570b5d300cea84abf48b1504346884, type: 2}
