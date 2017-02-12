@@ -97,17 +97,6 @@ public class Cat : MachineOperator<Cat>
         //Update the active state
         MachineInstance.ExecuteActiveState(this);
 
-        canJump = false;
-
-        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, Vector2.down, .05f);
-        if (hit != null && hit.Where(x => x.collider.gameObject.tag == "Floor").Any() && jumpTimer <= 0)
-        {
-            canJump = true;
-
-            if (isJumping)
-                isJumping = false;
-        }
-
         isFalling = Rigidbody.velocity.y < 0;
 
         if (jumpTimer > 0)
@@ -115,6 +104,14 @@ public class Cat : MachineOperator<Cat>
 
         InputListen();
         SetBoolInAnimators();
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag != "Floor")
+            return;
+
+        canJump = false;
     }
 
     private void SetBoolInAnimators()
@@ -291,6 +288,15 @@ public class Cat : MachineOperator<Cat>
         {
             TakeDamage(5);
         }
+
+        if (collision.gameObject.tag == "Floor")
+        {
+            canJump = true;
+
+            if (isJumping)
+                isJumping = false;
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
