@@ -16,6 +16,7 @@ public class Cat : MachineOperator<Cat>
     private bool canJump;
     private Vector3 curLoc;
     private Vector3 preLoc;
+    [SerializeField] private State s;
     [SerializeField]
     private SpriteRenderer ghostCat;
     private MeshRenderer otherCats;
@@ -57,7 +58,7 @@ public class Cat : MachineOperator<Cat>
         //Update the active state
         MachineInstance.ExecuteActiveState(this);
 
-
+        s = ActiveState;
         InputListen();
     }
 

@@ -5,14 +5,14 @@ using UnityEngine;
 public class Stone : MonoBehaviour
 {
 
-    private int damage;
+    public int damage;
     private Transform player;
     private bool startMoving;
     public Vector2 velocity;
 	// Use this for initialization
 	void Start ()
 	{
-	    damage = 25;
+	    
         player = GameObject.FindWithTag("Player").transform;
 	}
 	
@@ -33,16 +33,20 @@ public class Stone : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        damage = 25;
+       
        
 
         if (collision.gameObject.tag == "Player")
         {
-            if (GetComponent<Cat>().ActiveState.StateType != typeof (NormalState))
+            if (collision.collider.GetComponent<Cat>().ActiveState.StateType != typeof (NormalState))
             {
-                
+                collision.collider.GetComponent<Cat>().TakeDamage(100);
             }
-   
+            else
+            {
+                collision.collider.GetComponent<Cat>().TakeDamage(damage);
+            }
+
         }
         if (collision.gameObject.tag == "Floor")
         {
