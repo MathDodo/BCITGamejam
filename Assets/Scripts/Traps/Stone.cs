@@ -23,15 +23,15 @@ public class Stone : MonoBehaviour
         if (!DimensionManager.Instance.FreezeTime && !GameObject.FindWithTag("GhostTrap"))
         {
 
-            if (player.transform.position.x >= 50)
+            if (player.transform.position.x <= 15)
             {
                 GetComponent<Rigidbody2D>().simulated = true;
             }
             if (startMoving)
             {
-                velocity = new Vector2(-10, 0);
+                velocity = new Vector2(-1, 0);
                 Rigidbody2D rb2D = GetComponent<Rigidbody2D>();
-                rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
+                rb2D.velocity = new Vector2(velocity.x, rb2D.velocity.y);
             }
         }
        
