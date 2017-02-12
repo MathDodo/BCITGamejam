@@ -3798,6 +3798,11 @@ Prefab:
       propertyPath: m_Constraints
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 33075912702368700, guid: 086b1fbfb0380b843987be6c202fce12,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 086b1fbfb0380b843987be6c202fce12, type: 2}
   m_IsPrefabParent: 0

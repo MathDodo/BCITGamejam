@@ -59,6 +59,8 @@ public class Cat : MachineOperator<Cat>
     /// <summary>
     private void Start()
     {
+        jumpTimer = jumpDelay;
+
         health = maxHealth;
         //Running the init of the machineoperator, to find the machine instance
         Init(targetMachine);
@@ -91,6 +93,9 @@ public class Cat : MachineOperator<Cat>
 
     }
 
+    public Transform raycast;
+    public Transform raycast2;
+
     /// <summary>
     /// Update
     /// </summary>
@@ -100,20 +105,27 @@ public class Cat : MachineOperator<Cat>
         MachineInstance.ExecuteActiveState(this);
 
         isFalling = Rigidbody.velocity.y < 0;
+        canJump = false;
 
-        if (jumpTimer > 0)
+        var hit = Physics2D.RaycastAll(raycast.position, Vector2.down, .3f);
+        var hit2 = Physics2D.RaycastAll(raycast2.position, Vector2.down, .3f);
+
+        if (hit.Where(x => x.collider.tag == "Floor").Any() || hit2.Where(x => x.collider.tag == "Floor").Any())
+        {
+            canJump = true;
+
+            if (isJumping && jumpTimer <= 0)
+            {
+                isJumping = false;
+                jumpTimer = jumpDelay;
+            }
+        }
+
+        if (isJumping && jumpTimer > 0)
             jumpTimer -= Time.deltaTime;
 
         InputListen();
         SetBoolInAnimators();
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag != "Floor")
-            return;
-
-        canJump = false;
     }
 
     private void SetBoolInAnimators()
@@ -296,13 +308,6 @@ public class Cat : MachineOperator<Cat>
             TakeDamage(5);
         }
 
-        if (collision.gameObject.tag == "Floor")
-        {
-            canJump = true;
-
-            if (isJumping)
-                isJumping = false;
-        }
         if (collision.gameObject.tag == "OutOfSpace")
         {
             TakeDamage(health);
