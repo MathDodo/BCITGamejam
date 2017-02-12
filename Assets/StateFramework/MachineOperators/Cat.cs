@@ -134,23 +134,18 @@ public class Cat : MachineOperator<Cat>
         //left movement
         if (Input.GetKey(KeyCode.A))
         {
-
             curLoc -= new Vector3(10*Time.fixedDeltaTime, 0);
 
-            curLoc -= new Vector3(1 * Time.fixedDeltaTime, 0);
 
             transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
         }
         //Right movement
         if (Input.GetKey(KeyCode.D))
         {
-
             curLoc += new Vector3(10*Time.fixedDeltaTime, 0);
 
-            curLoc += new Vector3(1 * Time.fixedDeltaTime, 0);
 
             transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
-
         }
 
         transform.position = curLoc;
