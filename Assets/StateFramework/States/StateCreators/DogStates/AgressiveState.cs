@@ -36,12 +36,7 @@ public class AgressiveState : StateGeneric<Dog>
         {
             direction = 75;
         }
-        else
-        {
-            user.MachineInstance.ChangeState<IdleState>(user);
-            return;
-        }
-
+       
         if (user.IsTargetInAttackRange && user.AttackTimer <= 0)
         {
             user.ResetAttack();
@@ -50,6 +45,11 @@ public class AgressiveState : StateGeneric<Dog>
         else if (!user.IsTargetInAttackRange)
         {
             user.RBody.velocity = new Vector2(direction * Time.deltaTime, 0);
+        }
+        else if (!user.IsTargetInRange)
+        {
+            user.MachineInstance.ChangeState<IdleState>(user);
+            
         }
     }
 

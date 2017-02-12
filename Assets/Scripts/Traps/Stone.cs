@@ -23,7 +23,7 @@ public class Stone : MonoBehaviour
         if (!DimensionManager.Instance.FreezeTime && !GameObject.FindWithTag("GhostTrap"))
         {
 
-            if (player.transform.position.x <= 100)
+            if (player.transform.position.x >= 50)
             {
                 GetComponent<Rigidbody2D>().simulated = true;
             }
