@@ -252,6 +252,7 @@ public class Cat : MachineOperator<Cat>
 
         if (health <= 0)
         {
+            lives --;
             if (lives > 0)
             {
                 Respawn();
@@ -283,6 +284,7 @@ public class Cat : MachineOperator<Cat>
         if (collision.gameObject.tag == "Hole")
         {
             TakeDamage(health);
+            
         }
         else if (collision.gameObject.tag == "DeadlyCeiling")
         {
@@ -295,6 +297,10 @@ public class Cat : MachineOperator<Cat>
 
             if (isJumping)
                 isJumping = false;
+        }
+        if (collision.gameObject.tag == "OutOfSpace")
+        {
+            TakeDamage(health);
         }
 
     }
