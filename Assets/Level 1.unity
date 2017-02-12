@@ -170,7 +170,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 52051095}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 162, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
@@ -1526,11 +1526,6 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.7071067
       objectReference: {fileID: 0}
-    - target: {fileID: 114484033285977542, guid: db66358f6eea7af4898b9619f3296224,
-        type: 2}
-      propertyPath: damage
-      value: 15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db66358f6eea7af4898b9619f3296224, type: 2}
   m_IsPrefabParent: 0
@@ -1874,7 +1869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40eb1b6318c1efb44ac05842dfb694d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 25
 --- !u!1 &402356326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,20 +2039,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4378610418844206, guid: 681a64ebdc6a16b45bcb66d602bed7f3, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4378610418844206, guid: 681a64ebdc6a16b45bcb66d602bed7f3, type: 2}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4378610418844206, guid: 681a64ebdc6a16b45bcb66d602bed7f3, type: 2}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 114513286963396046, guid: 681a64ebdc6a16b45bcb66d602bed7f3,
         type: 2}
       propertyPath: damage
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 681a64ebdc6a16b45bcb66d602bed7f3, type: 2}
@@ -3392,11 +3387,6 @@ Prefab:
       propertyPath: randomSeed
       value: -864467293
       objectReference: {fileID: 0}
-    - target: {fileID: 114484033285977542, guid: db66358f6eea7af4898b9619f3296224,
-        type: 2}
-      propertyPath: damage
-      value: 15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db66358f6eea7af4898b9619f3296224, type: 2}
   m_IsPrefabParent: 0
@@ -4442,7 +4432,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 887486472}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 40.7, y: 5.46, z: -10}
   m_LocalScale: {x: 2.5, y: 1, z: 1}
   m_Children: []
@@ -5427,7 +5417,7 @@ Prefab:
     - target: {fileID: 114222361838732250, guid: 221df79593937cb4a83fef6445d7df5d,
         type: 2}
       propertyPath: damage
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 221df79593937cb4a83fef6445d7df5d, type: 2}
@@ -5666,6 +5656,11 @@ Prefab:
     - target: {fileID: 1473945695981418, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
       propertyPath: m_Name
       value: BladeTrap (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114919166114233266, guid: 6262a93f977e73040b8eb85f60e72150,
+        type: 2}
+      propertyPath: damage
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
@@ -8070,18 +8065,6 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1119681768485350, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1473945695981418, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1171641146766210, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114919166114233266, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
@@ -8196,19 +8179,7 @@ Prefab:
     - target: {fileID: 114919166114233266, guid: 6262a93f977e73040b8eb85f60e72150,
         type: 2}
       propertyPath: damage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1473945695981418, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1171641146766210, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119681768485350, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
-      propertyPath: m_Layer
-      value: 9
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
@@ -8323,7 +8294,7 @@ Prefab:
     - target: {fileID: 114478189391123434, guid: e0041e4b64360a042bf7f9af35531ad4,
         type: 2}
       propertyPath: damage
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0041e4b64360a042bf7f9af35531ad4, type: 2}
@@ -8699,7 +8670,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1915369315}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 40.7, y: -5.72, z: -10}
   m_LocalScale: {x: 2.55, y: 1, z: 1}
   m_Children: []
@@ -9425,11 +9396,6 @@ Prefab:
       propertyPath: m_Name
       value: Trap_Fire (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 114484033285977542, guid: db66358f6eea7af4898b9619f3296224,
-        type: 2}
-      propertyPath: damage
-      value: 15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db66358f6eea7af4898b9619f3296224, type: 2}
   m_IsPrefabParent: 0
@@ -9676,7 +9642,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2132511495}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.18, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
