@@ -42,6 +42,9 @@ public class Cat : MachineOperator<Cat>
     private bool isWalking;
     private List<Animator> catimators;
 
+    public int Health { get { return health; } }
+    public int Lives { get { return lives; } }
+
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
     /// <summary>
