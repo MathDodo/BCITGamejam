@@ -65,7 +65,7 @@ public class Dog : MachineOperator<Dog>
 
         MachineInstance.ChangeState<IdleState>(this);
 
-        dogAnimator = GetComponent<Animator>();
+       // dogAnimator = GetComponent<Animator>();
 
         RBody = GetComponent<Rigidbody2D>();
 
@@ -84,7 +84,7 @@ public class Dog : MachineOperator<Dog>
         else
         {
             //Not sure about this one
-            dogAnimator.speed = 0;
+         //   dogAnimator.speed = 0;
         }
     }
 
@@ -93,8 +93,8 @@ public class Dog : MachineOperator<Dog>
         //dogAnimator.speed = 1;
         if (GameManager.Instance.Player)
         {
-            IsTargetInRange = Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= targetingDistance;
-            IsTargetInAttackRange = Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= attackDistance;
+            IsTargetInRange = Vector2.Distance(transform.position, GameManager.Instance.Player.transform.position) <= targetingDistance;
+            IsTargetInAttackRange = Vector2.Distance(transform.position, GameManager.Instance.Player.transform.position) <= attackDistance;
         }
 
         if (AttackTimer >= 0)
