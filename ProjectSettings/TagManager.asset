@@ -8,6 +8,7 @@ TagManager:
   - HairBall
   - Cat
   - Dog
+  - Hule
   layers:
   - Default
   - TransparentFX
