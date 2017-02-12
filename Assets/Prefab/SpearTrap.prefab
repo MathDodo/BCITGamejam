@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33361934618019240}
   - component: {fileID: 23264515015776642}
   - component: {fileID: 61103486576801346}
+  - component: {fileID: 114576177885416150}
   m_Layer: 0
   m_Name: Spear
   m_TagString: Untagged
@@ -55,8 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4302684233996250}
   - component: {fileID: 111911043341004372}
-  - component: {fileID: 114990993766515666}
-  - component: {fileID: 61691962788372264}
   m_Layer: 0
   m_Name: SpearTrap
   m_TagString: Untagged
@@ -195,20 +194,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.4610021}
   serializedVersion: 2
   m_Size: {x: 0.25792786, y: 3.0811567}
---- !u!61 &61691962788372264
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1867788716291408}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.4610021}
-  serializedVersion: 2
-  m_Size: {x: 0.25792786, y: 3.0811567}
 --- !u!111 &111911043341004372
 Animation:
   m_ObjectHideFlags: 1
@@ -224,15 +209,16 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114990993766515666
+--- !u!114 &114576177885416150
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1867788716291408}
+  m_GameObject: {fileID: 1113441858941606}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40eb1b6318c1efb44ac05842dfb694d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 10
+  anim: {fileID: 111911043341004372}

@@ -39,8 +39,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4022172767223308}
   - component: {fileID: 114564998778048204}
-  - component: {fileID: 50978614495958912}
-  - component: {fileID: 70627622257154900}
+  - component: {fileID: 50144452424559352}
+  - component: {fileID: 61767547685545658}
   m_Layer: 0
   m_Name: Player
   m_TagString: Cat
@@ -315,7 +315,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976133997386348}
   m_Mesh: {fileID: 0}
---- !u!50 &50978614495958912
+--- !u!50 &50144452424559352
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -333,10 +333,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!70 &70627622257154900
-CapsuleCollider2D:
+--- !u!61 &61767547685545658
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -346,9 +346,9 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.27, y: 1.3406836}
-  m_Size: {x: 3.67, y: 2.64}
-  m_Direction: 1
+  m_Offset: {x: 0.25662136, y: 1.1750565}
+  serializedVersion: 2
+  m_Size: {x: 2.701808, y: 2.3776512}
 --- !u!95 &95123279446478842
 Animator:
   serializedVersion: 3
@@ -442,6 +442,7 @@ MonoBehaviour:
   hairBallPrefab: {fileID: 1167628260087102, guid: 8ac40931a90540442ac1601e6924ab5b,
     type: 2}
   hairBallSpawner: {fileID: 4930540312906738}
+  jumpDelay: 0.1
 --- !u!114 &114572675203717628
 MonoBehaviour:
   m_ObjectHideFlags: 1

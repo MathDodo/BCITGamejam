@@ -416,6 +416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnload: 0
   player: {fileID: 0}
+  Cats: []
+  normalCat: {fileID: 0}
 --- !u!114 &114326621740744512
 MonoBehaviour:
   m_ObjectHideFlags: 1

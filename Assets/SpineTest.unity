@@ -209,7 +209,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 33133682127956826, guid: 6d570b5d300cea84abf48b1504346884,
+    - target: {fileID: 33373283984792796, guid: 6d570b5d300cea84abf48b1504346884,
         type: 2}
       propertyPath: m_Mesh
       value: 
@@ -219,34 +219,12 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 33373283984792796, guid: 6d570b5d300cea84abf48b1504346884,
+    - target: {fileID: 33133682127956826, guid: 6d570b5d300cea84abf48b1504346884,
         type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 23920218932980040, guid: 6d570b5d300cea84abf48b1504346884,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 23914071711614498, guid: 6d570b5d300cea84abf48b1504346884,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114564998778048204, guid: 6d570b5d300cea84abf48b1504346884,
-        type: 2}
-      propertyPath: attackTimer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114564998778048204, guid: 6d570b5d300cea84abf48b1504346884,
-        type: 2}
-      propertyPath: jumpDelay
-      value: 0.1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 70627622257154900, guid: 6d570b5d300cea84abf48b1504346884, type: 2}
-    - {fileID: 50978614495958912, guid: 6d570b5d300cea84abf48b1504346884, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d570b5d300cea84abf48b1504346884, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &307470392
@@ -328,45 +306,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 12.8, y: 0.37}
---- !u!1 &606421832 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1178799888055566, guid: 6d570b5d300cea84abf48b1504346884,
-    type: 2}
-  m_PrefabInternal: {fileID: 119699320}
---- !u!61 &606421833
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 606421832}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0.25662136, y: 1.1750565}
-  serializedVersion: 2
-  m_Size: {x: 2.701808, y: 2.3776512}
---- !u!50 &606421834
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 606421832}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!114 &606421838 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114564998778048204, guid: 6d570b5d300cea84abf48b1504346884,
@@ -688,24 +627,6 @@ Prefab:
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 23106753718130428, guid: 182ef7d4e13ca904c9b22e9c672bdc5d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 23344890970985736, guid: 182ef7d4e13ca904c9b22e9c672bdc5d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1107681078421724, guid: 182ef7d4e13ca904c9b22e9c672bdc5d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783452548961184, guid: 182ef7d4e13ca904c9b22e9c672bdc5d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 182ef7d4e13ca904c9b22e9c672bdc5d, type: 2}

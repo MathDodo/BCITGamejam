@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33437692323479796}
   - component: {fileID: 23144964654262412}
   - component: {fileID: 61097562377799616}
+  - component: {fileID: 114651045632981830}
   m_Layer: 9
   m_Name: Blade
   m_TagString: Untagged
@@ -55,8 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4314241128360682}
   - component: {fileID: 111857904799468862}
-  - component: {fileID: 114919166114233266}
-  - component: {fileID: 61761968343941428}
   m_Layer: 9
   m_Name: BladeTrap
   m_TagString: Untagged
@@ -195,20 +194,6 @@ BoxCollider2D:
   m_Offset: {x: 0.00000021606684, y: 1.369}
   serializedVersion: 2
   m_Size: {x: 0.3445381, y: 2.7379303}
---- !u!61 &61761968343941428
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1473945695981418}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.6896553}
-  serializedVersion: 2
-  m_Size: {x: 0.3445381, y: 1.3792393}
 --- !u!111 &111857904799468862
 Animation:
   m_ObjectHideFlags: 1
@@ -224,15 +209,16 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114919166114233266
+--- !u!114 &114651045632981830
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1473945695981418}
+  m_GameObject: {fileID: 1171641146766210}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40eb1b6318c1efb44ac05842dfb694d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  anim: {fileID: 111857904799468862}
