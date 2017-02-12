@@ -8,11 +8,12 @@ public class MirrorCat : MonoBehaviour
 
     private void Start()
     {
-        spr = GetComponent<SpriteRenderer>();
+       
     }
 
     public void SwapCat()
     {
+        spr = GetComponent<SpriteRenderer>();
         spr.enabled = !spr.enabled;
     }
 }
