@@ -264,6 +264,7 @@ public class Cat : MachineOperator<Cat>
     private void Respawn()
     {
         health = maxHealth;
+        MachineInstance.ChangeState<NormalState>(this);
         transform.position = new Vector3(-5.18f, -2.14f, 15);
     }
 }
