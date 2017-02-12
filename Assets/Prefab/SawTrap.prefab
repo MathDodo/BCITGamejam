@@ -20,8 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4637929687584994}
   - component: {fileID: 111590912760607140}
-  - component: {fileID: 114197395564262282}
-  - component: {fileID: 58503929324393992}
   m_Layer: 0
   m_Name: SawTrap
   m_TagString: Untagged
@@ -91,6 +89,7 @@ GameObject:
   - component: {fileID: 33971782999914802}
   - component: {fileID: 23426959923407610}
   - component: {fileID: 58155537271772676}
+  - component: {fileID: 114835562855493456}
   m_Layer: 0
   m_Name: SawBlade
   m_TagString: Untagged
@@ -130,7 +129,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1492299221602924}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0}
   m_LocalPosition: {x: 0, y: 0, z: 1.599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -143,9 +142,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1218064764696914}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -3.29, y: -0.82, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.5, y: 0.50000006, z: 0.50000006, w: 0.49999988}
+  m_LocalPosition: {x: 7.57, y: 3.495821, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 4912554572434692}
   - {fileID: 4227551084819358}
@@ -153,7 +152,7 @@ Transform:
   - {fileID: 4541807261208090}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 90.00001, z: 0}
 --- !u!4 &4912554572434692
 Transform:
   m_ObjectHideFlags: 1
@@ -333,20 +332,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.6085762
---- !u!58 &58503929324393992
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1218064764696914}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.6085762
 --- !u!111 &111590912760607140
 Animation:
   m_ObjectHideFlags: 1
@@ -362,15 +347,16 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114197395564262282
+--- !u!114 &114835562855493456
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1218064764696914}
+  m_GameObject: {fileID: 1943787468027268}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40eb1b6318c1efb44ac05842dfb694d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 100
+  anim: {fileID: 111590912760607140}

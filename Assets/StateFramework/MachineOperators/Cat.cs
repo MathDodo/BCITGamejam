@@ -19,12 +19,6 @@ public class Cat : MachineOperator<Cat>
     //The mark of the target machine, also exposed to the inspector
     private MachineMarker targetMachine = MachineMarker.CatFSM;
 
-    private float xScale;
-    private bool canJump;
-    private Vector3 curLoc;
-    private Vector3 preLoc;
-    [SerializeField]
-    private State s;
     [SerializeField]
     private SpriteRenderer ghostCat;
 
@@ -32,16 +26,28 @@ public class Cat : MachineOperator<Cat>
     private int lives = 9;
 
     public List<MeshRendererPair> otherCats;
-
     public GameObject hairBallPrefab;
     public Transform hairBallSpawner;
-    public Rigidbody2D Rigidbody { get; set; }
+    public float jumpForce;
 
     private Animator animator;
+    private float xScale;
+    private Vector3 curLoc;
+    private Vector3 preLoc;
     private SkeletonAnimator skAnimator;
 
     private bool isWalking;
-    private List<Animator> catimators;
+    private bool isJumping;
+    private bool canJump;
+    private bool isFalling;
+
+    private float jumpTimer;
+    public float jumpDelay;
+
+    public float speed;
+    private List<SkeletonAnimation> catimators;
+
+    public Rigidbody2D Rigidbody { get; set; }
 
     public int Health { get { return health; } }
     public int Lives { get { return lives; } }
@@ -64,25 +70,24 @@ public class Cat : MachineOperator<Cat>
         MachineInstance.ChangeState<NormalState>(this);
 
         xScale = transform.localScale.x;
-        xScale = transform.localScale.x;
 
         GameManager.Instance.Player = this;
-        catimators = new List<Animator>();
+        catimators = new List<SkeletonAnimation>();
         foreach (var item in otherCats)
         {
-            catimators.Add(item.rednerer.GetComponent<Animator>());
+            var anim = item.rednerer.GetComponent<SkeletonAnimation>();
+            if (anim != null)
+                catimators.Add(anim);
         }
         foreach (var item in Carousel.Instance.Cats)
         {
-            catimators.Add(item.GetComponent<Animator>());
+            var anim = item.GetComponent<SkeletonAnimation>();
+            if (anim != null)
+                catimators.Add(anim);
         }
-        catimators.Add(ghostCat.GetComponent<Animator>());
-        catimators.Add(Carousel.Instance.normalCat.GetComponent<Animator>());
+        catimators.Add(Carousel.Instance.normalCat.GetComponent<SkeletonAnimation>());
 
     }
-
-    private float jumpTimer;
-    public float jumpDelay;
 
     /// <summary>
     /// Update
@@ -97,17 +102,52 @@ public class Cat : MachineOperator<Cat>
         RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, Vector2.down, .05f);
         if (hit != null && hit.Where(x => x.collider.gameObject.tag == "Floor").Any() && jumpTimer <= 0)
         {
+            canJump = true;
+
             if (isJumping)
                 isJumping = false;
-
-            canJump = true;
         }
+
+        isFalling = Rigidbody.velocity.y < 0;
 
         if (jumpTimer > 0)
             jumpTimer -= Time.deltaTime;
 
         InputListen();
         SetBoolInAnimators();
+    }
+
+    private void SetBoolInAnimators()
+    {
+        foreach (var item in catimators)
+        {
+            //If the player is idleing
+            if (!isWalking && !isJumping && !isFalling && canJump)
+            {
+                item.AnimationName = "idle";
+                item.loop = true;
+            }
+
+            //If the player is waling on the ground
+            if (isWalking && !isJumping && !isFalling && canJump)
+            {
+                item.AnimationName = "walk";
+                item.loop = true;
+            }
+
+            //if the player is jumping
+            if (isJumping)
+            {
+                item.AnimationName = "jump_up";
+                item.loop = false;
+            }
+            //if the player is falling
+            if (isFalling)
+            {
+                item.AnimationName = "jump_falling";
+                item.loop = true;
+            }
+        }
     }
 
     private void InputListen()
@@ -118,7 +158,7 @@ public class Cat : MachineOperator<Cat>
         if (canJump && Input.GetKeyDown(KeyCode.W))
         {
             isJumping = true;
-            Rigidbody.AddForce(Vector2.up * 250);
+            Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
         isWalking = false;
@@ -126,7 +166,7 @@ public class Cat : MachineOperator<Cat>
         //left movement
         if (Input.GetKey(KeyCode.A))
         {
-            curLoc -= new Vector3(10 * Time.fixedDeltaTime, 0);
+            curLoc -= new Vector3(speed * Time.fixedDeltaTime, 0);
             isWalking = true;
             transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
 
@@ -144,7 +184,7 @@ public class Cat : MachineOperator<Cat>
         //Right movement
         if (Input.GetKey(KeyCode.D))
         {
-            curLoc += new Vector3(10 * Time.fixedDeltaTime, 0);
+            curLoc += new Vector3(speed * Time.fixedDeltaTime, 0);
             isWalking = true;
             transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
 
@@ -160,15 +200,6 @@ public class Cat : MachineOperator<Cat>
         }
 
         transform.position = curLoc;
-    }
-    private bool isJumping;
-    private void SetBoolInAnimators()
-    {
-        foreach (var item in catimators)
-        {
-            item.SetBool("jumping", isJumping);
-            item.SetBool("walking", isWalking);
-        }
     }
 
     public void Fire(GameObject hairBallPrefab, Transform hairBallSpawner)
