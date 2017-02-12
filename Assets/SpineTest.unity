@@ -294,7 +294,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 33642589606397352, guid: 6d570b5d300cea84abf48b1504346884,
+    - target: {fileID: 33187231656070544, guid: 6d570b5d300cea84abf48b1504346884,
         type: 2}
       propertyPath: m_Mesh
       value: 
@@ -304,7 +304,7 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 33187231656070544, guid: 6d570b5d300cea84abf48b1504346884,
+    - target: {fileID: 33642589606397352, guid: 6d570b5d300cea84abf48b1504346884,
         type: 2}
       propertyPath: m_Mesh
       value: 
