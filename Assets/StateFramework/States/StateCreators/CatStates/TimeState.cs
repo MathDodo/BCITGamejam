@@ -1,4 +1,3 @@
-using Spine.Unity;
 using UnityEngine;
 
 /// <summary>
@@ -13,10 +12,9 @@ public class TimeState : StateGeneric<Cat>
     private string stateName = "TimeState";
 
     [SerializeField]
-    private RuntimeAnimatorController controller;
+    private float exitTime = 2;
 
-    [SerializeField]
-    private SkeletonDataAsset asset;
+    private float timeTimer;
 
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
@@ -26,6 +24,7 @@ public class TimeState : StateGeneric<Cat>
     {
         user.ChangeCat("time");
         DimensionManager.Instance.StopDimensionTime();
+        timeTimer = exitTime;
     }
 
     /// <summary>
@@ -34,8 +33,12 @@ public class TimeState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
-        //Maybe timer>??
+        timeTimer -= Time.deltaTime;
 
+        if (timeTimer <= 0)
+        {
+            user.MachineInstance.ChangeState<NormalState>(user);
+        }
     }
 
     /// <summary>

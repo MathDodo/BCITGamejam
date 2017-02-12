@@ -1,5 +1,4 @@
 using UnityEngine;
-using Spine.Unity;
 
 /// <summary>
 /// This is a class for making specified functionality for the state,
@@ -8,17 +7,12 @@ using Spine.Unity;
 [CreateAssetMenu(fileName = "NormalState", menuName = "States/NormalState", order = 1)]
 public class NormalState : StateGeneric<Cat>
 {
-    [SerializeField]
     //The name of the state also exposed for the editor
+    [SerializeField]
     private string stateName = "NormalState";
+
     private GameObject hairBallPrefab;
     private Transform hairBallSpawner;
-
-    [SerializeField]
-    private RuntimeAnimatorController controller;
-
-    [SerializeField]
-    private SkeletonDataAsset asset;
 
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
