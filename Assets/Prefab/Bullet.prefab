@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33567628127064096}
   - component: {fileID: 23731315114909654}
   - component: {fileID: 58615158249841114}
-  - component: {fileID: 50336695807226630}
   - component: {fileID: 114020090934723912}
+  - component: {fileID: 50136866193215370}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: HairBall
@@ -82,7 +82,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1167628260087102}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!50 &50336695807226630
+--- !u!50 &50136866193215370
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -90,13 +90,13 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1167628260087102}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -115,7 +115,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.49999997
+  m_Radius: 0.5
 --- !u!114 &114020090934723912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,4 +127,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a0ff0d62381dd479e3d87a89398866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CatTransform: {fileID: 0}

@@ -4,12 +4,12 @@ using UnityEngine;
 /// This is a class for making specified functionality for the state,
 /// and to make the creation of the scriptable object possible.
 /// </summary>
-[CreateAssetMenu(fileName = "IdleState", menuName = "States/IdleState", order = 1)]
-public class IdleState : StateGeneric<Dog>
+[CreateAssetMenu(fileName = "AttackState", menuName = "States/AttackState", order = 1)]
+public class AttackState : StateGeneric<Dog>
 {
     [SerializeField]
     //The name of the state also exposed for the editor
-    private string stateName = "IdleState";
+    private string stateName = "AttackState";
 
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
@@ -17,7 +17,7 @@ public class IdleState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Enter(Dog user)
     {
-        user.ChangeAnimation("Idle");
+        user.ChangeAnimation("Attack");
     }
 
     /// <summary>
@@ -26,11 +26,15 @@ public class IdleState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Execute(Dog user)
     {
-        user.IdleTimer -= Time.deltaTime;
+        user.AttackDelay -= Time.deltaTime;
 
-        if (user.IdleTimer <= 0)
+        if (user.AttackDelay <= 0 && user.IsTargetInAttackRange)
         {
-            user.MachineInstance.ChangeState<MovingState>(user);
+            //Deal damage to target
+        }
+        else if (!user.IsTargetInAttackRange)
+        {
+
         }
     }
 
@@ -40,7 +44,7 @@ public class IdleState : StateGeneric<Dog>
     /// <param name="user"></param>
     public override void Exit(Dog user)
     {
-        user.ResetIdleTimer();
+        user.ResetAttack();
     }
 
     /// <summary>
@@ -57,7 +61,7 @@ public class IdleState : StateGeneric<Dog>
     /// </summary>
     public override void SetStateType()
     {
-        StateType = typeof(IdleState);
+        StateType = typeof(AttackState);
     }
 
     /// <summary>
