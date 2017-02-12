@@ -4,12 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransitioner : MonoBehaviour
 {
-    [SerializeField]
-    private CanvasRenderer menu;
-
-    [SerializeField]
-    private CanvasRenderer credits;
-
     public void Play()
     {
         SceneManager.LoadScene("");
@@ -17,14 +11,7 @@ public class SceneTransitioner : MonoBehaviour
 
     public void Credits()
     {
-        menu.gameObject.SetActive(false);
-        credits.gameObject.SetActive(true);
-    }
-
-    public void MenuPanel()
-    {
-        menu.gameObject.SetActive(true);
-        credits.gameObject.SetActive(false);
+        SceneManager.LoadScene("");
     }
 
     public void MenuScene()
