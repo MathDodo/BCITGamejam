@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// The class which can operate a machine where it is allowed
@@ -258,6 +259,14 @@ public class Cat : MachineOperator<Cat>
         else if (collision.gameObject.tag == "DeadlyCeiling")
         {
             TakeDamage(5);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Portal")
+        {
+            SceneManager.LoadScene("");
         }
     }
 

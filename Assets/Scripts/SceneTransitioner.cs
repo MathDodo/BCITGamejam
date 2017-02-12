@@ -21,10 +21,15 @@ public class SceneTransitioner : MonoBehaviour
         credits.gameObject.SetActive(true);
     }
 
-    public void Menu()
+    public void MenuPanel()
     {
         menu.gameObject.SetActive(true);
         credits.gameObject.SetActive(false);
+    }
+
+    public void MenuScene()
+    {
+        SceneManager.LoadScene("");
     }
 
     public void Quit()
