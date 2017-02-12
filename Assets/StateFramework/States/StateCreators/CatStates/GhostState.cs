@@ -11,12 +11,19 @@ public class GhostState : StateGeneric<Cat>
     [SerializeField]
     private string stateName = "GhostState";
 
+    [SerializeField]
+    private float exitTimer = 2;
+
+    private float ghostTimer;
+
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
     /// </summary>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
+        ghostTimer = exitTimer;
+
         user.ChangeCat("ghost");
 
         user.ChangeCollisionLayer("Ghost");
@@ -29,7 +36,12 @@ public class GhostState : StateGeneric<Cat>
     public override void Execute(Cat user)
     {
         //Maybe timer>??
+        ghostTimer -= Time.deltaTime;
 
+        if (ghostTimer <= 0)
+        {
+            user.MachineInstance.ChangeState<NormalState>(user);
+        }
     }
 
     /// <summary>
