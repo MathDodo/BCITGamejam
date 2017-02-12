@@ -7,14 +7,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NormalState", menuName = "States/NormalState", order = 1)]
 public class NormalState : StateGeneric<Cat>
 {
-    [SerializeField]
     //The name of the state also exposed for the editor
+    [SerializeField]
     private string stateName = "NormalState";
+
     private GameObject hairBallPrefab;
     private Transform hairBallSpawner;
-
-    [SerializeField]
-    private RuntimeAnimatorController controller;
 
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
@@ -22,7 +20,7 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
-        user.ChangeAnimatorController(controller);
+        user.ChangeCat("normal");
         user.ChangeCollisionLayer("Default");
         hairBallSpawner = user.hairBallSpawner;
         hairBallPrefab = user.hairBallPrefab;

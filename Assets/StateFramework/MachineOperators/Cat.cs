@@ -1,4 +1,8 @@
 using UnityEngine;
+using Spine.Unity;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// The class which can operate a machine where it is allowed
@@ -19,14 +23,15 @@ public class Cat : MachineOperator<Cat>
     [SerializeField] private State s;
     [SerializeField]
     private SpriteRenderer ghostCat;
-    private MeshRenderer otherCats;
 
-    private Animator animator;
+    public List<MeshRendererPair> otherCats;
 
     public GameObject hairBallPrefab;
     public Transform hairBallSpawner;
-
     public Rigidbody2D Rigidbody { get; set; }
+
+    private Animator animator;
+    private SkeletonAnimator skAnimator;
 
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
@@ -38,16 +43,16 @@ public class Cat : MachineOperator<Cat>
 
         //Calling the must run method for the machine instance, and enabling the change state with types
         MachineInstance.Init();
+        animator = GetComponent<Animator>();
+        skAnimator = GetComponent<SkeletonAnimator>();
 
         Rigidbody = GetComponent<Rigidbody2D>();
         MachineInstance.ChangeState<NormalState>(this);
-        xScale = transform.localScale.x;
-        otherCats = GetComponent<MeshRenderer>();
 
+        xScale = transform.localScale.x;
         xScale = transform.localScale.x;
 
         GameManager.Instance.Player = this;
-        DisableGhost();
     }
 
     /// <summary>
@@ -60,21 +65,6 @@ public class Cat : MachineOperator<Cat>
 
         s = ActiveState;
         InputListen();
-    }
-
-
-    /// <summary>
-    /// Select the state to go to here
-    /// </summary>
-    private void SelectState()
-    {
-        // if we are not in the normal state return
-        if (!(ActiveState is NormalState))
-            return;
-
-        //Get the state in the carousel
-
-        MachineInstance.ChangeState<GravityState>(this);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -109,10 +99,31 @@ public class Cat : MachineOperator<Cat>
         Destroy(hairBall, 5.0f);
     }
 
-    public void ChangeAnimatorController(RuntimeAnimatorController controller)
+    public void ChangeCat(string name)
     {
-        //Enable this when we have an animator and the states have a controller
-        //animator.runtimeAnimatorController = controller;
+        if (name == "ghost")
+        {
+            ghostCat.enabled = true;
+
+            foreach (var item in otherCats)
+            {
+                item.rednerer.enabled = false;
+            }
+        }
+
+        else
+        {
+            ghostCat.enabled = false;
+
+            foreach (var item in otherCats)
+            {
+                if (item.name == name)
+                    item.rednerer.enabled = true;
+                else
+                    item.rednerer.enabled = false;
+            }
+        }
+
     }
 
     public void ChangeCollisionLayer(string layerName)
@@ -125,10 +136,6 @@ public class Cat : MachineOperator<Cat>
         preLoc = curLoc;
 
         curLoc = transform.position;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SelectState();
-        }
         if (canJump && Input.GetKeyDown(KeyCode.W))
         {
             Rigidbody.AddForce(Vector2.up * 250);
@@ -163,18 +170,6 @@ public class Cat : MachineOperator<Cat>
         {
             Destroy(gameObject);
         }
-    }
-
-    public void EnableGhost()
-    {
-        ghostCat.enabled = true;
-        otherCats.enabled = false;
-    }
-
-    public void DisableGhost()
-    {
-        ghostCat.enabled = false;
-        otherCats.enabled = true;
     }
 }
 

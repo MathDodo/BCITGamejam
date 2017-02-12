@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Name: GravityState
   m_EditorClassIdentifier: 
   stateName: GravityState
+  controller: {fileID: 0}
+  asset: {fileID: 11400000, guid: 68c4a23c4839d2945be6e82de0a84bc0, type: 2}
   exitTimer: 2

@@ -12,7 +12,9 @@ public class GhostState : StateGeneric<Cat>
     private string stateName = "GhostState";
 
     [SerializeField]
-    private RuntimeAnimatorController controller;
+    private float exitTimer = 2;
+
+    private float ghostTimer;
 
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
@@ -20,9 +22,10 @@ public class GhostState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
-        user.EnableGhost();
+        ghostTimer = exitTimer;
 
-        user.ChangeAnimatorController(controller);
+        user.ChangeCat("ghost");
+
         user.ChangeCollisionLayer("Ghost");
     }
 
@@ -33,7 +36,12 @@ public class GhostState : StateGeneric<Cat>
     public override void Execute(Cat user)
     {
         //Maybe timer>??
+        ghostTimer -= Time.deltaTime;
 
+        if (ghostTimer <= 0)
+        {
+            user.MachineInstance.ChangeState<NormalState>(user);
+        }
     }
 
     /// <summary>
@@ -42,7 +50,7 @@ public class GhostState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Exit(Cat user)
     {
-        user.DisableGhost();
+        user.ChangeCollisionLayer("Default");
 
         Carousel.Instance.SwapCatBack();
     }
