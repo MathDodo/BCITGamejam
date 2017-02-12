@@ -1,3 +1,4 @@
+using Spine.Unity;
 using UnityEngine;
 
 /// <summary>
@@ -11,12 +12,19 @@ public class TimeState : StateGeneric<Cat>
     //The name of the state also exposed for the editor
     private string stateName = "TimeState";
 
+    [SerializeField]
+    private RuntimeAnimatorController controller;
+
+    [SerializeField]
+    private SkeletonDataAsset asset;
+
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
     /// </summary>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
+        user.ChangeCat("time");
         DimensionManager.Instance.StopDimensionTime();
     }
 

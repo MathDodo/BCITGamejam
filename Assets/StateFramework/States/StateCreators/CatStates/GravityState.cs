@@ -1,4 +1,5 @@
 using UnityEngine;
+using Spine.Unity;
 
 /// <summary>
 /// This is a class for making specified functionality for the state,
@@ -12,6 +13,11 @@ public class GravityState : StateGeneric<Cat>
     private string stateName = "GravityState";
 
     [SerializeField]
+    private RuntimeAnimatorController controller;
+    [SerializeField]
+    private SkeletonDataAsset asset;
+
+    [SerializeField]
     private float exitTimer = 2;
 
     private float timer;
@@ -22,6 +28,8 @@ public class GravityState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
+        user.ChangeCat("space");
+
         user.Rigidbody.velocity = new Vector2(0, 20);
         Physics2D.gravity = new Vector2(0, 10);
         timer = exitTimer;

@@ -5,13 +5,13 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: NormalCat_Controller
+  m_Name: SpaceCat2_Controller
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-    m_StateMachine: {fileID: 1107227690380084636}
+    m_StateMachine: {fileID: 1107550559592900174}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -21,7 +21,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!74 &74529285580152186
+--- !u!74 &74769698722151480
 AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -101,7 +101,7 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_IsEmpty: 0
   m_Events: []
---- !u!1107 &1107227690380084636
+--- !u!1107 &1107550559592900174
 AnimatorStateMachine:
   serializedVersion: 5
   m_ObjectHideFlags: 1

@@ -25,7 +25,5 @@ public class MirrorCat : MonoBehaviour
             spr.enabled = !spr.enabled;
         else
             mesh.enabled = !mesh.enabled;
-        spr = GetComponent<SpriteRenderer>();
-        spr.enabled = !spr.enabled;
     }
 }

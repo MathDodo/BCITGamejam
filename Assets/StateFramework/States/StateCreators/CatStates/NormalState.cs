@@ -1,4 +1,5 @@
 using UnityEngine;
+using Spine.Unity;
 
 /// <summary>
 /// This is a class for making specified functionality for the state,
@@ -16,13 +17,16 @@ public class NormalState : StateGeneric<Cat>
     [SerializeField]
     private RuntimeAnimatorController controller;
 
+    [SerializeField]
+    private SkeletonDataAsset asset;
+
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
     /// </summary>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
-        user.ChangeAnimatorController(controller);
+        user.ChangeCat("normal");
         user.ChangeCollisionLayer("Default");
         hairBallSpawner = user.hairBallSpawner;
         hairBallPrefab = user.hairBallPrefab;

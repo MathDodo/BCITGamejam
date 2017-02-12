@@ -9,7 +9,6 @@ public class Carousel : Singleton<Carousel>
     [SerializeField]
     private Cat player;
 
-    private float y = -.7f;
 
     private List<Vector3> catPos;
     private List<Vector2> catScales;
@@ -24,7 +23,7 @@ public class Carousel : Singleton<Carousel>
     /// </summary>
     void Start()
     {
-        catPos = new List<Vector3> { new Vector2(-1, y), new Vector2(0, y), new Vector2(1, y) };
+        catPos = new List<Vector3> { new Vector2(-1.7f, -.5f), new Vector2(0, -.5f), new Vector2(1.7f, -.5f) };
         catScales = new List<Vector2>() { new Vector2(.3f, -.3f), new Vector2(.5f, -.5f), new Vector2(.3f, -.3f) };
 
 

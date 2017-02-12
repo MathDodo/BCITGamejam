@@ -11,18 +11,14 @@ public class GhostState : StateGeneric<Cat>
     [SerializeField]
     private string stateName = "GhostState";
 
-    [SerializeField]
-    private RuntimeAnimatorController controller;
-
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
     /// </summary>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
-        user.EnableGhost();
+        user.ChangeCat("ghost");
 
-        user.ChangeAnimatorController(controller);
         user.ChangeCollisionLayer("Ghost");
     }
 
@@ -42,7 +38,7 @@ public class GhostState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Exit(Cat user)
     {
-        user.DisableGhost();
+        user.ChangeCollisionLayer("Default");
 
         Carousel.Instance.SwapCatBack();
     }
