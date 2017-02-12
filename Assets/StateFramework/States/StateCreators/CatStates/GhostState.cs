@@ -20,6 +20,8 @@ public class GhostState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Enter(Cat user)
     {
+        user.EnableGhost();
+
         user.ChangeAnimatorController(controller);
         user.ChangeCollisionLayer("Ghost");
     }
@@ -40,6 +42,8 @@ public class GhostState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Exit(Cat user)
     {
+        user.DisableGhost();
+
         Carousel.Instance.SwapCatBack();
     }
 

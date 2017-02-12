@@ -1,0 +1,104 @@
+
+NormalCat.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BackArm
+  rotate: true
+  xy: 87, 9
+  size: 53, 95
+  orig: 53, 95
+  offset: 0, 0
+  index: -1
+BackArmPaw
+  rotate: false
+  xy: 462, 109
+  size: 46, 28
+  orig: 46, 28
+  offset: 0, 0
+  index: -1
+BackLeg
+  rotate: false
+  xy: 733, 180
+  size: 49, 74
+  orig: 49, 74
+  offset: 0, 0
+  index: -1
+BackLegPaw
+  rotate: false
+  xy: 184, 26
+  size: 29, 36
+  orig: 29, 36
+  offset: 0, 0
+  index: -1
+BackShoulder
+  rotate: false
+  xy: 675, 169
+  size: 56, 85
+  orig: 56, 85
+  offset: 0, 0
+  index: -1
+BackThigh
+  rotate: false
+  xy: 354, 65
+  size: 106, 72
+  orig: 106, 72
+  offset: 0, 0
+  index: -1
+CatBody
+  rotate: false
+  xy: 2, 64
+  size: 350, 190
+  orig: 350, 190
+  offset: 0, 0
+  index: -1
+CatTail
+  rotate: false
+  xy: 354, 139
+  size: 177, 115
+  orig: 177, 115
+  offset: 0, 0
+  index: -1
+FrontArm
+  rotate: false
+  xy: 601, 167
+  size: 72, 87
+  orig: 72, 87
+  offset: 0, 0
+  index: -1
+FrontArmPaw
+  rotate: true
+  xy: 422, 24
+  size: 39, 34
+  orig: 39, 34
+  offset: 0, 0
+  index: -1
+FrontLeg
+  rotate: true
+  xy: 354, 2
+  size: 61, 66
+  orig: 61, 66
+  offset: 0, 0
+  index: -1
+FrontLegPaw
+  rotate: false
+  xy: 784, 228
+  size: 38, 26
+  orig: 38, 26
+  offset: 0, 0
+  index: -1
+FrontShoulder
+  rotate: false
+  xy: 2, 2
+  size: 83, 60
+  orig: 83, 60
+  offset: 0, 0
+  index: -1
+FrontThigh
+  rotate: false
+  xy: 533, 145
+  size: 66, 109
+  orig: 66, 109
+  offset: 0, 0
+  index: -1
