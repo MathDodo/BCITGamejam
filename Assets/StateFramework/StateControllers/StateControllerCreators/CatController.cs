@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /// <summary>
 /// The specified controller for the demo operator, made so you will have a creating option in the inspector, having a controller for the specified machine,
@@ -7,4 +7,6 @@
 [CreateAssetMenu(fileName = "CatController", menuName = "StateControllers/CatController", order = 2)]
 public class CatController : StateControllerGeneric<Cat>
 {
+    [SerializeField]
+    private string test = "Good job";
 }
