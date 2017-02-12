@@ -189,7 +189,6 @@ GameObject:
   m_Layer: 0
   m_Name: Cave Background Spires 3 (1)
   m_TagString: Untagged
->>>>>>> 8ffc00d7668cb1f7d59953e623d7670320e9e3b4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,11 +239,7 @@ Transform:
   m_LocalScale: {x: -3.2957036, y: 1.3908926, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 57
-=======
   m_RootOrder: 137
->>>>>>> 8ffc00d7668cb1f7d59953e623d7670320e9e3b4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &68706678
 GameObject:
@@ -387,11 +382,7 @@ Transform:
   m_LocalScale: {x: 2.5913587, y: 1.5302231, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 76
-=======
   m_RootOrder: 54
->>>>>>> 8ffc00d7668cb1f7d59953e623d7670320e9e3b4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &92059279
 GameObject:
@@ -455,11 +446,7 @@ Transform:
   m_LocalScale: {x: 1.2189023, y: 1.1584607, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 26
-=======
   m_RootOrder: 18
->>>>>>> 8ffc00d7668cb1f7d59953e623d7670320e9e3b4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &109080594
 GameObject:
@@ -538,9 +525,6 @@ Transform:
   m_LocalScale: {x: 1.2189023, y: 0.74139154, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 36
-=======
   m_RootOrder: 63
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123667056
@@ -571,7 +555,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 668503086}
   m_RootOrder: 0
->>>>>>> 8ffc00d7668cb1f7d59953e623d7670320e9e3b4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &123667058
 BoxCollider2D:
@@ -649,11 +632,7 @@ Transform:
   m_LocalScale: {x: 5.81989, y: 1.4170998, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 25
-=======
   m_RootOrder: 86
->>>>>>> 8ffc00d7668cb1f7d59953e623d7670320e9e3b4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &212125427
 GameObject:
@@ -728,19 +707,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 212125427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 22.88, y: -3.948, z: 0}
-  m_LocalScale: {x: 1.4341547, y: 1.8369197, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 44
-=======
   m_LocalPosition: {x: 116.75, y: -2.72, z: 0}
   m_LocalScale: {x: 1.5987893, y: 2.0724418, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 52
->>>>>>> 8ffc00d7668cb1f7d59953e623d7670320e9e3b4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251564765
 GameObject:
@@ -749,14 +720,9 @@ GameObject:
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 158570973}
-  - component: {fileID: 158570972}
-=======
   - component: {fileID: 251564768}
   - component: {fileID: 251564767}
   - component: {fileID: 251564766}
->>>>>>> 8ffc00d7668cb1f7d59953e623d7670320e9e3b4
   m_Layer: 0
   m_Name: Cave Ceiling Transition
   m_TagString: Floor
@@ -764,9 +730,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!212 &158570972
-=======
 --- !u!70 &251564766
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -782,7 +745,6 @@ CapsuleCollider2D:
   m_Size: {x: 12.042978, y: 1.8475072}
   m_Direction: 0
 --- !u!212 &251564767
->>>>>>> 8ffc00d7668cb1f7d59953e623d7670320e9e3b4
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1564,6 +1526,11 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.7071067
       objectReference: {fileID: 0}
+    - target: {fileID: 114484033285977542, guid: db66358f6eea7af4898b9619f3296224,
+        type: 2}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db66358f6eea7af4898b9619f3296224, type: 2}
   m_IsPrefabParent: 0
@@ -1579,20 +1546,11 @@ GameObject:
   - component: {fileID: 357589493}
   m_Layer: 9
   m_Name: Cave Boulder Obstacle (3)
->>>>>>> 8ffc00d7668cb1f7d59953e623d7670320e9e3b4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!212 &305796003
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 305796001}
-=======
 --- !u!61 &357589493
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1916,7 +1874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40eb1b6318c1efb44ac05842dfb694d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 10
 --- !u!1 &402356326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2099,7 +2057,7 @@ Prefab:
     - target: {fileID: 114513286963396046, guid: 681a64ebdc6a16b45bcb66d602bed7f3,
         type: 2}
       propertyPath: damage
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 681a64ebdc6a16b45bcb66d602bed7f3, type: 2}
@@ -3433,6 +3391,11 @@ Prefab:
         type: 2}
       propertyPath: randomSeed
       value: -864467293
+      objectReference: {fileID: 0}
+    - target: {fileID: 114484033285977542, guid: db66358f6eea7af4898b9619f3296224,
+        type: 2}
+      propertyPath: damage
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db66358f6eea7af4898b9619f3296224, type: 2}
@@ -5707,7 +5670,7 @@ Prefab:
     - target: {fileID: 114919166114233266, guid: 6262a93f977e73040b8eb85f60e72150,
         type: 2}
       propertyPath: damage
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
@@ -8226,7 +8189,7 @@ Prefab:
     - target: {fileID: 114919166114233266, guid: 6262a93f977e73040b8eb85f60e72150,
         type: 2}
       propertyPath: damage
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6262a93f977e73040b8eb85f60e72150, type: 2}
@@ -8341,7 +8304,7 @@ Prefab:
     - target: {fileID: 114478189391123434, guid: e0041e4b64360a042bf7f9af35531ad4,
         type: 2}
       propertyPath: damage
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0041e4b64360a042bf7f9af35531ad4, type: 2}
@@ -9442,6 +9405,11 @@ Prefab:
     - target: {fileID: 1971835305041840, guid: db66358f6eea7af4898b9619f3296224, type: 2}
       propertyPath: m_Name
       value: Trap_Fire (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114484033285977542, guid: db66358f6eea7af4898b9619f3296224,
+        type: 2}
+      propertyPath: damage
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db66358f6eea7af4898b9619f3296224, type: 2}
