@@ -1,9 +1,8 @@
-using UnityEngine;
 using Spine.Unity;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 /// <summary>
 /// The class which can operate a machine where it is allowed
@@ -11,7 +10,9 @@ using System.Linq;
 public class Cat : MachineOperator<Cat>
 {
     [SerializeField]
-    private int health = 100;
+    private int maxHealth = 100;
+
+    private int health;
 
     [SerializeField]
     //The mark of the target machine, also exposed to the inspector
@@ -19,6 +20,9 @@ public class Cat : MachineOperator<Cat>
 
     [SerializeField]
     private SpriteRenderer ghostCat;
+
+    [SerializeField]
+    private int lives = 9;
 
     public List<MeshRendererPair> otherCats;
     public GameObject hairBallPrefab;
@@ -44,11 +48,15 @@ public class Cat : MachineOperator<Cat>
 
     public Rigidbody2D Rigidbody { get; set; }
 
+    public int Health { get { return health; } }
+    public int Lives { get { return lives; } }
+
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
     /// <summary>
     private void Start()
     {
+        health = maxHealth;
         //Running the init of the machineoperator, to find the machine instance
         Init(targetMachine);
 
@@ -60,7 +68,6 @@ public class Cat : MachineOperator<Cat>
         Rigidbody = GetComponent<Rigidbody2D>();
         MachineInstance.ChangeState<NormalState>(this);
 
-        xScale = transform.localScale.x;
         xScale = transform.localScale.x;
 
         GameManager.Instance.Player = this;
@@ -247,7 +254,14 @@ public class Cat : MachineOperator<Cat>
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            if (lives > 0)
+            {
+                Respawn();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
         Debug.Log(health);
     }
@@ -264,6 +278,25 @@ public class Cat : MachineOperator<Cat>
         Vector3 userScaler = transform.localScale;
         userScaler.y *= -1;
         transform.localScale = userScaler;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Hole")
+        {
+            TakeDamage(health);
+        }
+        else if (collision.gameObject.tag == "DeadlyCeiling")
+        {
+            TakeDamage(5);
+        }
+    }
+
+    private void Respawn()
+    {
+        health = maxHealth;
+        MachineInstance.ChangeState<NormalState>(this);
+        transform.position = new Vector3(-5.18f, -2.14f, 15);
     }
 }
 

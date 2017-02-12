@@ -8,9 +8,9 @@ TagManager:
   - HairBall
   - Cat
   - Dog
-  - Hule
   - DeadlyCeiling
   - GhostTrap
+  - Hole
   layers:
   - Default
   - TransparentFX
