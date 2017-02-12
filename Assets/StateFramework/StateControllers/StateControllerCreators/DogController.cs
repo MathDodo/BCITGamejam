@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// The specified controller for the demo operator, made so you will have a creating option in the inspector, having a controller for the specified machine,

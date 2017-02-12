@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,17 +8,17 @@ public class SceneTransitioner : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("New level 1");
     }
 
     public void Credits()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Credits");
     }
 
     public void MenuScene()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void Quit()
