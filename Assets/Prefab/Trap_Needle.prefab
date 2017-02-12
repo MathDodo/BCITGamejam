@@ -20,8 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4325213317475400}
   - component: {fileID: 111499060047109510}
-  - component: {fileID: 114478189391123434}
-  - component: {fileID: 58701588666143496}
   m_Layer: 0
   m_Name: Trap_Needle
   m_TagString: Untagged
@@ -56,7 +54,8 @@ GameObject:
   - component: {fileID: 4618813887095780}
   - component: {fileID: 33452981799596268}
   - component: {fileID: 23999063371269404}
-  - component: {fileID: 58358678970692182}
+  - component: {fileID: 114069180024392902}
+  - component: {fileID: 58245854352576142}
   m_Layer: 0
   m_Name: Needle
   m_TagString: Untagged
@@ -70,7 +69,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1749061325645088}
-  m_LocalRotation: {x: 1.7112914e-15, y: 1, z: -0.000000021855694, w: 0.0000000754979}
+  m_LocalRotation: {x: 1.7112914e-15, y: 1, z: -0.000000021855694, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -83,8 +82,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1588474241480092}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 13.625741, y: -2.716, z: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 74.15, y: -0.389, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4618813887095780}
@@ -181,7 +180,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1903223706988752}
   m_Mesh: {fileID: 4300000, guid: a07105af0bc77a942ac71b139b8f4c4b, type: 3}
---- !u!58 &58358678970692182
+--- !u!58 &58245854352576142
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -190,25 +189,11 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.0019949232, y: 0.24579579}
+  m_Offset: {x: 0.0019949225, y: 0.24579579}
   serializedVersion: 2
-  m_Radius: 0.2702992
---- !u!58 &58701588666143496
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1588474241480092}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0.0019949232, y: 0.24579579}
-  serializedVersion: 2
-  m_Radius: 0.2702992
+  m_Radius: 0.2649776
 --- !u!111 &111499060047109510
 Animation:
   m_ObjectHideFlags: 1
@@ -227,15 +212,16 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114478189391123434
+--- !u!114 &114069180024392902
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1588474241480092}
+  m_GameObject: {fileID: 1903223706988752}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40eb1b6318c1efb44ac05842dfb694d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 10
+  anim: {fileID: 111499060047109510}

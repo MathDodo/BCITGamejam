@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4984832315580526}
   - component: {fileID: 33995369986000020}
   - component: {fileID: 23556575640217300}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GreatAxeRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,9 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4038016233825656}
   - component: {fileID: 111711868325553280}
-  - component: {fileID: 114222361838732250}
-  - component: {fileID: 58088120289140126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SwingGreatAxeTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +55,8 @@ GameObject:
   - component: {fileID: 33286313016275472}
   - component: {fileID: 23890881747976114}
   - component: {fileID: 58412343898788452}
-  m_Layer: 0
+  - component: {fileID: 114908510964129828}
+  m_Layer: 8
   m_Name: GreatAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,8 +70,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1391711214919230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.611451, y: 4.59, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 96.7, y: 0.7, z: 0}
+  m_LocalScale: {x: 0.5689034, y: 0.56890357, z: 0.56890357}
   m_Children:
   - {fileID: 4984832315580526}
   - {fileID: 4170570542417656}
@@ -181,20 +180,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317605140158312}
   m_Mesh: {fileID: 4300000, guid: bab1d8e407bbb19498ba98659c7ea4af, type: 3}
---- !u!58 &58088120289140126
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1391711214919230}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -2.0181832}
-  serializedVersion: 2
-  m_Radius: 2.6083384
 --- !u!58 &58412343898788452
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -224,15 +209,16 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114222361838732250
+--- !u!114 &114908510964129828
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1391711214919230}
+  m_GameObject: {fileID: 1749822156597446}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40eb1b6318c1efb44ac05842dfb694d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 25
+  anim: {fileID: 111711868325553280}

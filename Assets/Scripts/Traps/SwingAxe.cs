@@ -7,6 +7,7 @@ public class SwingAxe : MonoBehaviour
 
     public int damage;
     private float timerBetweenAttacks;
+    public Animation anim;
    
     
 	// Use this for initialization
@@ -18,7 +19,7 @@ public class SwingAxe : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    var anim = GetComponent<Animation>();
+	    
 	    anim.enabled = true;
         if (DimensionManager.Instance.FreezeTime && !GameObject.FindWithTag("GhostTrap"))
         {
