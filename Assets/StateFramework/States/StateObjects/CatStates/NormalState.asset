@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Name: NormalState
   m_EditorClassIdentifier: 
   stateName: NormalState
-  controller: {fileID: 9100000, guid: 04999b778de17714f934706d63abdbff, type: 2}
-  asset: {fileID: 11400000, guid: 6d6edce9677076743a324ac48165b334, type: 2}
+  attackTimer: 0.5737

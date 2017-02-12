@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: GhostState
   m_EditorClassIdentifier: 
   stateName: GhostState
-  controller: {fileID: 0}
+  exitTimer: 5

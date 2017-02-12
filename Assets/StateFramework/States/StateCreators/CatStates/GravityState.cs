@@ -15,7 +15,6 @@ public class GravityState : StateGeneric<Cat>
     private float exitTimer = 2;
 
     private float gravityTimer;
-    private Vector3 userScaler;
 
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
@@ -28,11 +27,8 @@ public class GravityState : StateGeneric<Cat>
         user.Rigidbody.velocity = new Vector2(0, 20);
         Physics2D.gravity = new Vector2(0, 10);
 
-        userScaler = user.transform.localScale;
-        userScaler.y *= -1;
-        user.transform.localScale = userScaler;
-
         gravityTimer = exitTimer;
+        user.FlipDelayed();
     }
 
 
@@ -57,10 +53,7 @@ public class GravityState : StateGeneric<Cat>
         Carousel.Instance.SwapCatBack();
         user.Rigidbody.velocity = new Vector2(0, -20);
         Physics2D.gravity = new Vector2(0, -10);
-
-        userScaler = user.transform.localScale;
-        userScaler.y *= -1;
-        user.transform.localScale = userScaler;
+        user.FlipDelayed();
     }
 
     /// <summary>

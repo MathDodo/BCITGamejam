@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Name: TimeState
   m_EditorClassIdentifier: 
   stateName: TimeState
-  controller: {fileID: 9100000, guid: 5b1ea53e8f5248943b382792af50737d, type: 2}
-  asset: {fileID: 11400000, guid: ff180f0f122f85840be9de40785c1817, type: 2}
+  exitTime: 5

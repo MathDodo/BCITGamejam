@@ -12,8 +12,8 @@ public class Carousel : Singleton<Carousel>
 
     private List<Vector3> catPos;
     private List<Vector2> catScales;
-    private List<MirrorCat> Cats = new List<MirrorCat>();
-    private MirrorCat normalCat;
+    public List<MirrorCat> Cats = new List<MirrorCat>();
+    public MirrorCat normalCat;
     private bool canRotate;
 
     public MirrorCat CurrentCat { get; set; }
@@ -25,7 +25,6 @@ public class Carousel : Singleton<Carousel>
     {
         catPos = new List<Vector3> { new Vector2(-1.7f, -.5f), new Vector2(0, -.5f), new Vector2(1.7f, -.5f) };
         catScales = new List<Vector2>() { new Vector2(.3f, -.3f), new Vector2(.5f, -.5f), new Vector2(.3f, -.3f) };
-
 
         //Get all the children
         foreach (Transform item in transform)
@@ -89,7 +88,12 @@ public class Carousel : Singleton<Carousel>
                 var currPosIndex = catPos.IndexOf(item.transform.localPosition);
 
                 item.transform.localPosition = catPos[ShiftInts(currPosIndex, shift, Cats.Count - 1, 0)];
-                item.transform.localScale = catScales[ShiftInts(currPosIndex, shift, Cats.Count - 1, 0)];
+
+                var scale = catScales[ShiftInts(currPosIndex, shift, Cats.Count - 1, 0)];
+                if (player.transform.localScale.x < 0)
+                    scale = new Vector2(scale.x * -1, scale.y);
+
+                item.transform.localScale = scale;
             }
 
         //Set the current cat to the middle one

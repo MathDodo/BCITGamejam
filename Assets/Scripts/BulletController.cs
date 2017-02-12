@@ -4,6 +4,7 @@ public class BulletController : MonoBehaviour
 {
     private float xTravel;
     private int damage;
+    private float timer = 5;
     // Use this for initialization
 
     public void Init(float xTravel)
@@ -11,16 +12,16 @@ public class BulletController : MonoBehaviour
         this.xTravel = xTravel;
     }
 
-    void Start()
-    {
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (!DimensionManager.Instance.FreezeTime)
         {
-            transform.Translate(new Vector3(xTravel, 0));
+            transform.Translate(new Vector3(xTravel * 5, 0));
+
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+                Destroy(gameObject);
         }
     }
 

@@ -14,6 +14,9 @@ public class NormalState : StateGeneric<Cat>
     private GameObject hairBallPrefab;
     private Transform hairBallSpawner;
 
+    private float timer;
+    public float attackTimer = 5f;
+
     /// <summary>
     /// Method which is called when a user enters this state, normally when the user changes states
     /// </summary>
@@ -24,7 +27,9 @@ public class NormalState : StateGeneric<Cat>
         user.ChangeCollisionLayer("Default");
         hairBallSpawner = user.hairBallSpawner;
         hairBallPrefab = user.hairBallPrefab;
+        timer = attackTimer;
     }
+
 
     /// <summary>
     /// Mehtod which is called when the user wants to execute, probably an execute is called each frame
@@ -32,9 +37,12 @@ public class NormalState : StateGeneric<Cat>
     /// <param name="user"></param>
     public override void Execute(Cat user)
     {
+        if (timer > 0)
+            timer -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && timer <= 0)
         {
+            timer = attackTimer;
             user.Fire(hairBallPrefab, hairBallSpawner);
         }
 

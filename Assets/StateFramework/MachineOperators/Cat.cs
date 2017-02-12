@@ -3,6 +3,7 @@ using Spine.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// The class which can operate a machine where it is allowed
@@ -33,6 +34,9 @@ public class Cat : MachineOperator<Cat>
     private Animator animator;
     private SkeletonAnimator skAnimator;
 
+    private bool isWalking;
+    private List<Animator> catimators;
+
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
     /// <summary>
@@ -53,6 +57,18 @@ public class Cat : MachineOperator<Cat>
         xScale = transform.localScale.x;
 
         GameManager.Instance.Player = this;
+        catimators = new List<Animator>();
+        foreach (var item in otherCats)
+        {
+            catimators.Add(item.rednerer.GetComponent<Animator>());
+        }
+        foreach (var item in Carousel.Instance.Cats)
+        {
+            catimators.Add(item.GetComponent<Animator>());
+        }
+        catimators.Add(ghostCat.GetComponent<Animator>());
+        catimators.Add(Carousel.Instance.normalCat.GetComponent<Animator>());
+
     }
 
     /// <summary>
@@ -63,23 +79,79 @@ public class Cat : MachineOperator<Cat>
         //Update the active state
         MachineInstance.ExecuteActiveState(this);
 
-        s = ActiveState;
-        InputListen();
-    }
+        canJump = false;
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Floor")
+        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, Vector2.down, .05f);
+        if (hit != null && hit.Where(x => x.collider.gameObject.tag == "Floor").Any())
         {
+            if (isJumping)
+                isJumping = false;
+
             canJump = true;
         }
+
+        InputListen();
+        SetBoolInAnimators();
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void InputListen()
     {
-        if (other.gameObject.tag == "Floor")
+        preLoc = curLoc;
+        curLoc = transform.position;
+
+        if (canJump && Input.GetKeyDown(KeyCode.W))
         {
-            canJump = false;
+            isJumping = true;
+            Rigidbody.AddForce(Vector2.up * 250);
+        }
+
+        isWalking = false;
+
+        //left movement
+        if (Input.GetKey(KeyCode.A))
+        {
+            curLoc -= new Vector3(10 * Time.fixedDeltaTime, 0);
+            isWalking = true;
+            transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
+
+            for (int i = 0; i < Carousel.Instance.Cats.Count; i++)
+            {
+                if (Carousel.Instance.Cats[i].transform.localScale.x > 0)
+                {
+                    Carousel.Instance.Cats[i].transform.localScale = new Vector3(Carousel.Instance.Cats[i].transform.localScale.x * -1, Carousel.Instance.Cats[i].transform.localScale.y,
+                        transform.localScale.z);
+                    Carousel.Instance.normalCat.transform.localScale = new Vector3(Carousel.Instance.normalCat.transform.localScale.x * -1, Carousel.Instance.normalCat.transform.localScale.y);
+
+                }
+            }
+        }
+        //Right movement
+        if (Input.GetKey(KeyCode.D))
+        {
+            curLoc += new Vector3(10 * Time.fixedDeltaTime, 0);
+            isWalking = true;
+            transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
+
+            for (int i = 0; i < Carousel.Instance.Cats.Count; i++)
+            {
+                if (Carousel.Instance.Cats[i].transform.localScale.x < 0)
+                {
+                    Carousel.Instance.Cats[i].transform.localScale = new Vector3(Carousel.Instance.Cats[i].transform.localScale.x * -1, Carousel.Instance.Cats[i].transform.localScale.y,
+                        transform.localScale.z);
+                    Carousel.Instance.normalCat.transform.localScale = new Vector3(Carousel.Instance.normalCat.transform.localScale.x * -1, Carousel.Instance.normalCat.transform.localScale.y);
+                }
+            }
+        }
+
+        transform.position = curLoc;
+    }
+    private bool isJumping;
+    private void SetBoolInAnimators()
+    {
+        foreach (var item in catimators)
+        {
+            item.SetBool("jumping", isJumping);
+            item.SetBool("walking", isWalking);
         }
     }
 
@@ -95,8 +167,6 @@ public class Cat : MachineOperator<Cat>
         {
             hairBall.GetComponent<BulletController>().Init(0.1f);
         }
-
-        Destroy(hairBall, 5.0f);
     }
 
     public void ChangeCat(string name)
@@ -131,36 +201,6 @@ public class Cat : MachineOperator<Cat>
         gameObject.layer = LayerMask.NameToLayer(layerName);
     }
 
-    private void InputListen()
-    {
-        preLoc = curLoc;
-
-        curLoc = transform.position;
-        if (canJump && Input.GetKeyDown(KeyCode.W))
-        {
-            Rigidbody.AddForce(Vector2.up * 250);
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Fire(hairBallPrefab, hairBallSpawner);
-        }
-        //left movement
-        if (Input.GetKey(KeyCode.A))
-        {
-            curLoc -= new Vector3(10 * Time.fixedDeltaTime, 0);
-
-            transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
-        }
-        //Right movement
-        if (Input.GetKey(KeyCode.D))
-        {
-            curLoc += new Vector3(10 * Time.fixedDeltaTime, 0);
-
-            transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
-        }
-
-        transform.position = curLoc;
-    }
 
     public void TakeDamage(int amount)
     {
@@ -170,6 +210,20 @@ public class Cat : MachineOperator<Cat>
         {
             Destroy(gameObject);
         }
+    }
+
+    public void FlipDelayed()
+    {
+        StartCoroutine(FlipScale());
+    }
+
+    private IEnumerator FlipScale()
+    {
+        yield return new WaitForSeconds(.03f);
+
+        Vector3 userScaler = transform.localScale;
+        userScaler.y *= -1;
+        transform.localScale = userScaler;
     }
 }
 

@@ -48,7 +48,7 @@ public class TimeState : StateGeneric<Cat>
     public override void Exit(Cat user)
     {
         Carousel.Instance.SwapCatBack();
-        DimensionManager.Instance.StopDimensionTime();
+        DimensionManager.Instance.StartDimensionTime();
     }
 
     /// <summary>
