@@ -42,9 +42,11 @@ public class NormalState : StateGeneric<Cat>
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && timer <= 0)
         {
+
                 timer = attackTimer;
                 user.Fire(hairBallPrefab, hairBallSpawner);
            
+
         }
 
     }

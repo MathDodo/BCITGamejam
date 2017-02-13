@@ -1,5 +1,4 @@
-﻿#if UNITY_EDITOR
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -52,7 +51,6 @@ public class ScriptCreater : MonoBehaviour
         CreateStateMachineWindow.ShowWindow();
     }
 }
-#endif
 
 
 

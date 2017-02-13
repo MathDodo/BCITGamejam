@@ -152,7 +152,7 @@ public class Cat : MachineOperator<Cat>
             if (isJumping)
             {
                 item.AnimationName = "jump_up";
-               
+
                 item.loop = false;
             }
             //if the player is falling
@@ -174,7 +174,7 @@ public class Cat : MachineOperator<Cat>
 
             PlaySound(1);
             isJumping = true;
-           
+
             Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
@@ -221,19 +221,19 @@ public class Cat : MachineOperator<Cat>
 
     public void Fire(GameObject hairBallPrefab, Transform hairBallSpawner)
     {
-            //Create the hairball!
-            var hairBall = Instantiate(hairBallPrefab, hairBallSpawner.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        //Create the hairball!
+        var hairBall = Instantiate(hairBallPrefab, hairBallSpawner.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 
-            if (transform.localScale.x < 0)
-            {
-                hairBall.GetComponent<BulletController>().Init(-0.1f);
-            }
-            if (transform.localScale.x > 0)
-            {
-                hairBall.GetComponent<BulletController>().Init(0.1f);
-            }
+        if (transform.localScale.x < 0)
+        {
+            hairBall.GetComponent<BulletController>().Init(-0.1f);
+        }
+        if (transform.localScale.x > 0)
+        {
+            hairBall.GetComponent<BulletController>().Init(0.1f);
+        }
 
-       
+
 
 
     }
@@ -243,7 +243,7 @@ public class Cat : MachineOperator<Cat>
     public void ChangeCat(string name)
     {
         PlaySound(4);
-       
+
         if (name == "ghost")
         {
             ghostCat.enabled = true;
@@ -286,7 +286,7 @@ public class Cat : MachineOperator<Cat>
         }
         else if (health <= 0 && lives < 0)
         {
-           PlaySound(0);
+            PlaySound(0);
         }
         if (health <= 0)
         {
@@ -328,6 +328,14 @@ public class Cat : MachineOperator<Cat>
         {
             TakeDamage(5);
         }
+
+        if (collision.gameObject.tag == "Floor")
+        {
+            canJump = true;
+
+            if (isJumping)
+                isJumping = false;
+        }
         if (collision.gameObject.tag == "OutOfSpace")
         {
             TakeDamage(health);
@@ -352,13 +360,13 @@ public class Cat : MachineOperator<Cat>
 
     public void PlaySound(int clip)
     {
-        
+
         GetComponent<AudioSource>().clip = sounds[clip];
         GetComponent<AudioSource>().Play();
     }
 
-   
 
-   
+
+
 }
 
