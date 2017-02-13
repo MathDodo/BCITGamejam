@@ -11,4 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41890280256e4914595db404449f037a, type: 3}
   m_Name: DogController
   m_EditorClassIdentifier: 
-  allowedStates: []
+  allowedStates:
+  - {fileID: 11400000, guid: 60ccc35547924e542b6e5017b08d70e6, type: 2}
+  - {fileID: 11400000, guid: b5bd48985bdfa5f4580edc407761e7fc, type: 2}
+  - {fileID: 11400000, guid: 8356ba2443cc12b44898a8dcd0449c06, type: 2}
+  - {fileID: 11400000, guid: 3ca80a07c8a909549b4293beb3423af2, type: 2}

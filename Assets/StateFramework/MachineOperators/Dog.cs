@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Spine.Unity;
 
@@ -40,6 +41,8 @@ public class Dog : MachineOperator<Dog>
 
     [SerializeField]
     private int damage = 10;
+
+    public bool walkingLeft = true;
 
     private SkeletonAnimation dogAnimator;
 
@@ -124,6 +127,15 @@ public class Dog : MachineOperator<Dog>
     {
         MovingTimer = movingTime;
         MovingDirection *= -1;
+
+        if (MovingDirection < 0)
+        {
+            walkingLeft = true;
+        }
+        else if(MovingDirection > 0)
+        {
+            walkingLeft = false;
+        }
     }
 
     public void ChangeAnimation(string animationName)
@@ -165,5 +177,18 @@ public class Dog : MachineOperator<Dog>
         {
             Destroy(this.gameObject);
         }
+    }
+    private IEnumerator FlipScale()
+    {
+        yield return new WaitForSeconds(.03f);
+
+        Vector3 userScaler = transform.localScale;
+        userScaler.x *= -1;
+        transform.localScale = userScaler;
+    }
+
+    public void Delayflip()
+    {
+        StartCoroutine(FlipScale());
     }
 }

@@ -11,5 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c2c8177f0c5da4a95f4edc9f75f8de, type: 3}
   m_Name: CatController
   m_EditorClassIdentifier: 
-  allowedStates: []
+  allowedStates:
+  - {fileID: 11400000, guid: 554ef16c0ef151842beb566a705bd5a8, type: 2}
+  - {fileID: 11400000, guid: ffe144e87dce1fa4291dd42d2a8c3c99, type: 2}
+  - {fileID: 11400000, guid: 2837930000500034fb679f11e9e109ea, type: 2}
+  - {fileID: 11400000, guid: 38115399ce15de34b916951f01a5cfeb, type: 2}
   test: Good job

@@ -66,17 +66,18 @@ public class Cat : MachineOperator<Cat>
         //Running the init of the machineoperator, to find the machine instance
         Init(targetMachine);
 
+
+        GameManager.Instance.Player = this; 
+
         //Calling the must run method for the machine instance, and enabling the change state with types
         MachineInstance.Init();
-        animator = GetComponent<Animator>();
-        skAnimator = GetComponent<SkeletonAnimator>();
+
 
         Rigidbody = GetComponent<Rigidbody2D>();
         MachineInstance.ChangeState<NormalState>(this);
 
         xScale = transform.localScale.x;
 
-        GameManager.Instance.Player = this;
         catimators = new List<SkeletonAnimation>();
         foreach (var item in otherCats)
         {
@@ -232,10 +233,6 @@ public class Cat : MachineOperator<Cat>
         {
             hairBall.GetComponent<BulletController>().Init(0.1f);
         }
-
-
-
-
     }
 
     public GameObject portal;
@@ -297,7 +294,8 @@ public class Cat : MachineOperator<Cat>
             }
             else
             {
-                Destroy(gameObject);
+                SceneManager.LoadScene("DeathScene");
+                SceneManager.LoadScene("DeathScene");
             }
         }
         Debug.Log(health);
@@ -347,7 +345,7 @@ public class Cat : MachineOperator<Cat>
     {
         if (collision.gameObject.tag == "Portal")
         {
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene("WinningScene");
         }
     }
 
@@ -360,7 +358,6 @@ public class Cat : MachineOperator<Cat>
 
     public void PlaySound(int clip)
     {
-
         GetComponent<AudioSource>().clip = sounds[clip];
         GetComponent<AudioSource>().Play();
     }

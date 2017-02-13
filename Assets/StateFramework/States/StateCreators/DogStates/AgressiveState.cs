@@ -30,10 +30,20 @@ public class AgressiveState : StateGeneric<Dog>
     {
         if (GameManager.Instance.Player.transform.position.x + 1f < user.transform.position.x)
         {
+            if (!user.walkingLeft)
+            {
+                user.Delayflip();
+            }
+            user.walkingLeft = true;
             direction = -75;
         }
         else if (GameManager.Instance.Player.transform.position.x - 1f > user.transform.position.x)
         {
+            if (user.walkingLeft)
+            {
+                user.Delayflip();
+            }
+            user.walkingLeft = false;
             direction = 75;
         }
        
@@ -85,4 +95,5 @@ public class AgressiveState : StateGeneric<Dog>
     {
         StateName = stateName;
     }
+
 }

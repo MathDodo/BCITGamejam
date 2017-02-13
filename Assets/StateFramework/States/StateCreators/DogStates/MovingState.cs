@@ -27,7 +27,8 @@ public class MovingState : StateGeneric<Dog>
     public override void Execute(Dog user)
     {
         user.MovingTimer -= Time.deltaTime;
-
+        
+        
         user.RBody.velocity = new Vector2(user.MovingDirection * Time.deltaTime, user.RBody.velocity.y);
 
         if (user.IsTargetInRange)
