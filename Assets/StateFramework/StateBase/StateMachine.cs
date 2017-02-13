@@ -60,7 +60,7 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MachineOperator<
             //Adding state and state names to the dictionary
             for (int i = 0; i < specifiedController.AllowedStates.Count; i++)
             {
-                specifiedController.AllowedStates[i].SetStateType();
+                specifiedController.AllowedStates[i].SetStateName();
                 allowedStringStates.Add(specifiedController.AllowedStates[i].StateName, (StateGeneric<T>)specifiedController.AllowedStates[i]);
             }
 

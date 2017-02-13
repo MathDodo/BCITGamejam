@@ -19,5 +19,7 @@
     public void StopDimensionTime()
     {
         FreezeTime = true;
+        
     }
+
 }

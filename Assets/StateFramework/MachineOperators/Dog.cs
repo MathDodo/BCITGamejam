@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Spine.Unity;
 
@@ -41,6 +42,8 @@ public class Dog : MachineOperator<Dog>
     [SerializeField]
     private int damage = 10;
 
+    public bool walkingLeft = true;
+
     private SkeletonAnimation dogAnimator;
 
     public float IdleTimer { get; set; }
@@ -52,7 +55,12 @@ public class Dog : MachineOperator<Dog>
     public Rigidbody2D RBody { get; private set; }
     public bool IsTargetInAttackRange { get; set; }
     public float MovingDirection { get; private set; }
-    public int Damage { get { return damage; } }
+
+    public int Damage
+    {
+        get { return damage; }
+    }
+
     /// <summary>
     /// Unity start method, where the machine instance is set by the init methods
     /// <summary>
@@ -123,7 +131,16 @@ public class Dog : MachineOperator<Dog>
     public void ResetMovingTimer()
     {
         MovingTimer = movingTime;
-        MovingDirection *= -1;
+        MovingDirection *= 1;
+
+        if (MovingDirection < 0)
+        {
+            walkingLeft = true;
+        }
+        else if (MovingDirection > 0)
+        {
+            walkingLeft = false;
+        }
     }
 
     public void ChangeAnimation(string animationName)
@@ -165,5 +182,19 @@ public class Dog : MachineOperator<Dog>
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private IEnumerator FlipScale()
+    {
+        yield return new WaitForSeconds(.03f);
+
+        Vector3 userScaler = transform.localScale;
+        userScaler.x *= -1;
+        transform.localScale = userScaler;
+    }
+
+    public void Delayflip()
+    {
+        StartCoroutine(FlipScale());
     }
 }
