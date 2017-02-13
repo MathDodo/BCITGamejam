@@ -1,5 +1,4 @@
-﻿#if UNITY_EDITOR
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 public class RemoveStateWindow : EditorWindow
@@ -65,4 +64,3 @@ public class RemoveStateWindow : EditorWindow
         EditorGUILayout.Space();
     }
 }
-#endif

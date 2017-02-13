@@ -1,5 +1,4 @@
-﻿#if UNITY_EDITOR
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 public class WarningWindow : EditorWindow
@@ -55,4 +54,3 @@ public class WarningWindow : EditorWindow
         EditorGUILayout.Space();
     }
 }
-#endif

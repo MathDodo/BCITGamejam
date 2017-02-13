@@ -328,6 +328,14 @@ public class Cat : MachineOperator<Cat>
         {
             TakeDamage(5);
         }
+
+        if (collision.gameObject.tag == "Floor")
+        {
+            canJump = true;
+
+            if (isJumping)
+                isJumping = false;
+        }
         if (collision.gameObject.tag == "OutOfSpace")
         {
             TakeDamage(health);
