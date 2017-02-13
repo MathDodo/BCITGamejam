@@ -4023,7 +4023,7 @@ Prefab:
     - target: {fileID: 114217393569839604, guid: 086b1fbfb0380b843987be6c202fce12,
         type: 2}
       propertyPath: attackDistance
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 50851826369321128, guid: 086b1fbfb0380b843987be6c202fce12,
         type: 2}
@@ -4048,6 +4048,11 @@ Prefab:
         type: 2}
       propertyPath: startMovingDirection
       value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114217393569839604, guid: 086b1fbfb0380b843987be6c202fce12,
+        type: 2}
+      propertyPath: movingTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 086b1fbfb0380b843987be6c202fce12, type: 2}
