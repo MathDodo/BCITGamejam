@@ -94,6 +94,8 @@ public class Cat : MachineOperator<Cat>
 
     }
 
+    public Transform raycast;
+    public Transform raycast2;
     /// <summary>
     /// Update
     /// </summary>
@@ -103,20 +105,29 @@ public class Cat : MachineOperator<Cat>
         MachineInstance.ExecuteActiveState(this);
 
         isFalling = Rigidbody.velocity.y < 0;
+        canJump = false;
 
-        if (jumpTimer > 0)
+        var hit = Physics2D.RaycastAll(raycast.position, Vector2.down, .3f);
+        var hit2 = Physics2D.RaycastAll(raycast2.position, Vector2.down, .3f);
+        var hit3 = Physics2D.RaycastAll(raycast.position, Vector2.up, .3f);
+        var hit4 = Physics2D.RaycastAll(raycast2.position, Vector2.up, .3f);
+
+        if (hit.Where(x => x.collider.tag == "Floor").Any() || hit2.Where(x => x.collider.tag == "Floor").Any() || hit3.Where(x => x.collider.tag == "Floor").Any() || hit4.Where(x => x.collider.tag == "Floor").Any())
+        {
+            canJump = true;
+
+            if (isJumping && jumpTimer <= 0)
+            {
+                isJumping = false;
+                jumpTimer = jumpDelay;
+            }
+        }
+
+        if (isJumping && jumpTimer > 0)
             jumpTimer -= Time.deltaTime;
 
         InputListen();
         SetBoolInAnimators();
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag != "Floor")
-            return;
-
-        canJump = false;
     }
 
     private void SetBoolInAnimators()
@@ -231,6 +242,7 @@ public class Cat : MachineOperator<Cat>
 
     public void ChangeCat(string name)
     {
+        PlaySound(4);
        
         if (name == "ghost")
         {
@@ -268,14 +280,14 @@ public class Cat : MachineOperator<Cat>
     {
         health -= amount;
 
-        //if (health > 0)
-        //{
-        //    takeDamage.Play();
-        //}
-        //else if (health <= 0 && lives < 0)
-        //{
-        //    deathAudio.Play();
-        //}
+        if (health > 0)
+        {
+            PlaySound(2);
+        }
+        else if (health <= 0 && lives < 0)
+        {
+           PlaySound(0);
+        }
         if (health <= 0)
         {
             lives--;
@@ -316,14 +328,6 @@ public class Cat : MachineOperator<Cat>
         {
             TakeDamage(5);
         }
-
-        if (collision.gameObject.tag == "Floor")
-        {
-            canJump = true;
-
-            if (isJumping)
-                isJumping = false;
-        }
         if (collision.gameObject.tag == "OutOfSpace")
         {
             TakeDamage(health);
@@ -353,16 +357,8 @@ public class Cat : MachineOperator<Cat>
         GetComponent<AudioSource>().Play();
     }
 
-    public bool CheckSoundPlaying()
-    {
-        if (GetComponent<AudioSource>().isPlaying)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+   
+
+   
 }
 
